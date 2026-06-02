@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-command",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "convex": "convex dev",
+    "video:studio": "remotion studio src/remotion/index.ts",
+    "video:still": "remotion still src/remotion/index.ts PortfolioCommandLaunch out/PortfolioCommandLaunch-frame300.png --scale=0.35 --frame=300",
+    "video:render": "remotion render src/remotion/index.ts PortfolioCommandLaunch out/portfolio-command-launch.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.456",
+    "@remotion/paths": "^4.0.456",
+    "@vitejs/plugin-react": "^5.0.0",
+    "convex": "^1.19.1",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.456",
+    "vite": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  }
+}
