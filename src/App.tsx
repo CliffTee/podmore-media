@@ -32,11 +32,11 @@ const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Services", href: "/#services" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#about" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -350,7 +350,7 @@ function Header() {
         </a>
       </div>
       <header className="site-header">
-        <a className="brand" href="#home" aria-label="Podmore Media home">
+        <a className="brand" href="/" aria-label="Podmore Media home">
           <img src="/assets/podmore-media-logo-flat.png" alt="Podmore Media" />
         </a>
         <button className="mobile-menu-toggle" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
@@ -687,7 +687,7 @@ function Footer() {
         </div>
         <div>
           <h3>Menu</h3>
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
           <a href="/blog">Blog</a>
           <a href="/terms-of-service">Terms of Service</a>
           <a href="/privacy-policy">Privacy Policy</a>
