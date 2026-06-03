@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /d1707/
+Disallow: /d2305/
