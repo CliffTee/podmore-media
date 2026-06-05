@@ -1308,40 +1308,6 @@ details p {
   line-height: 1.55;
 }
 
-.local-test-page {
-  min-height: 100vh;
-  background: #f7f7f4;
-}
-
-.local-test-hero {
-  display: grid;
-  min-height: calc(100vh - 68px);
-  place-items: center;
-  color: #ffffff;
-  background:
-    linear-gradient(90deg, rgba(13, 16, 18, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, #d9271d 0%, #c91e16 100%);
-  background-size: 74px 100%, auto;
-}
-
-.local-test-inner {
-  display: grid;
-  justify-items: center;
-  max-width: 860px;
-  padding: 70px 0;
-  text-align: center;
-}
-
-.local-test-page h1 {
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-.local-test-page .ebook-buy-button {
-  margin-top: 30px;
-  background: #11171a;
-}
-
 @media (max-width: 1040px) {
   .site-header {
     grid-template-columns: 1fr;

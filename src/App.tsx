@@ -835,27 +835,6 @@ function ThankYouPage() {
   );
 }
 
-function LocalTestPage() {
-  return (
-    <main className="ebook-page local-test-page">
-      <section className="local-test-hero">
-        <div className="ebook-inner local-test-inner">
-          <p className="ebook-preheadline">Local deployment test</p>
-          <h1>Local Test Page</h1>
-          <p className="ebook-subheadline">
-            If you can see this page on Podmore Media, the local GitHub to Vercel deployment flow is working.
-          </p>
-          <a className="ebook-buy-button" href="/">
-            <span>Back to Podmore Media</span>
-            <ArrowRight size={18} />
-          </a>
-        </div>
-      </section>
-      <EbookFooter />
-    </main>
-  );
-}
-
 const ebookChapters = [
   {
     title: "Get Found - Local SEO Prompts",
@@ -1121,10 +1100,6 @@ export default function App() {
 
   if (path === "/thank-you-1909") {
     return <ThankYouPage />;
-  }
-
-  if (path === "/local-test-page") {
-    return <LocalTestPage />;
   }
 
   return <Homepage />;
