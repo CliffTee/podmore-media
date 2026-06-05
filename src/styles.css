@@ -1057,6 +1057,257 @@ details p {
   min-height: 560px;
 }
 
+.thank-you-page {
+  background: #f4f4f1;
+}
+
+.thank-you-hero {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(90deg, rgba(13, 16, 18, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, #d9271d 0%, #c91e16 100%);
+  background-size: 74px 100%, auto;
+}
+
+.thank-you-hero::after {
+  position: absolute;
+  right: -120px;
+  bottom: -160px;
+  width: 460px;
+  height: 460px;
+  border: 42px solid rgba(17, 23, 26, 0.16);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.thank-you-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.88fr);
+  gap: clamp(28px, 5vw, 62px);
+  align-items: center;
+  min-height: 680px;
+  padding: 46px 0 54px;
+}
+
+.thank-you-copy {
+  max-width: 700px;
+}
+
+.thank-you-page h1 {
+  max-width: 660px;
+  color: #ffffff;
+  font-size: clamp(42px, 5.7vw, 68px);
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.thank-you-fold-note {
+  max-width: 620px;
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border-left: 5px solid #11171a;
+  border-radius: 8px;
+  background: rgba(17, 23, 26, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.48;
+}
+
+.thank-you-bonus-panel {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #11171a;
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.24);
+}
+
+.thank-you-bonus-panel h2 {
+  color: #11171a;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 0.98;
+}
+
+.thank-you-bonus-panel > p:not(.ebook-eyebrow),
+.thank-you-bonus-panel .thank-you-help {
+  margin-top: 16px;
+  color: #475056;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.thank-you-download-panel {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  padding: 0;
+}
+
+.thank-you-download-panel img {
+  display: block;
+  width: min(100%, 430px);
+  height: auto;
+  filter: drop-shadow(0 28px 30px rgba(0, 0, 0, 0.38));
+  transform: rotate(-1.5deg);
+}
+
+.thank-you-download-panel div {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(17, 23, 26, 0.18);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 950;
+}
+
+.thank-you-download-panel svg {
+  color: #ffffff;
+}
+
+.ebook-buy-button.thank-you-download-button {
+  background: #11171a;
+  box-shadow: 0 18px 34px rgba(17, 23, 26, 0.26);
+}
+
+.thank-you-email-section {
+  background: #f7f7f4;
+}
+
+.thank-you-email-section .ebook-inner {
+  padding-top: 78px;
+  padding-bottom: 84px;
+}
+
+.thank-you-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.thank-you-panel {
+  padding: clamp(24px, 4vw, 34px);
+  border: 1px solid #e5e0db;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(17, 23, 26, 0.08);
+}
+
+.thank-you-panel.important-panel {
+  border-top: 6px solid #d9271d;
+}
+
+.thank-you-panel h2 {
+  color: #11171a;
+  font-size: clamp(30px, 3.8vw, 46px);
+  line-height: 1;
+}
+
+.thank-you-panel > p:not(.ebook-eyebrow),
+.thank-you-help,
+.thank-you-save-note {
+  margin-top: 18px;
+  color: #475056;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.thank-you-check-list,
+.thank-you-section-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.thank-you-check-list div,
+.thank-you-section-list div {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid #e5e0db;
+  border-radius: 8px;
+  background: #f7f7f4;
+}
+
+.thank-you-check-list svg,
+.thank-you-section-list svg {
+  color: #d9271d;
+}
+
+.thank-you-check-list span,
+.thank-you-section-list p {
+  color: #11171a;
+  font-size: 16px;
+  font-weight: 760;
+  line-height: 1.42;
+}
+
+.thank-you-bonus-panel .thank-you-check-list div {
+  padding: 14px;
+}
+
+.thank-you-section-list p {
+  margin: 0;
+}
+
+.thank-you-section-list strong,
+.thank-you-help a {
+  color: #11171a;
+  font-weight: 950;
+}
+
+.thank-you-help a {
+  text-decoration-color: #d9271d;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.thank-you-save-note {
+  padding: 18px;
+  border-left: 5px solid #d9271d;
+  border-radius: 8px;
+  background: #f7f7f4;
+  color: #11171a !important;
+  font-weight: 900;
+}
+
+.thank-you-download-card {
+  display: grid;
+  align-content: start;
+}
+
+.thank-you-download-wrap {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.thank-you-download-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 20px rgba(17, 23, 26, 0.18));
+}
+
+.thank-you-download-wrap p {
+  margin: 0 0 18px;
+  color: #475056;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
 @media (max-width: 1040px) {
   .site-header {
     grid-template-columns: 1fr;
@@ -1085,8 +1336,23 @@ details p {
   }
 
   .card-grid,
-  .footer-grid {
+  .footer-grid,
+  .thank-you-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .thank-you-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .thank-you-download-panel {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .thank-you-bonus-panel {
+    max-width: 620px;
+    margin: 0 auto;
   }
 }
 
@@ -1172,8 +1438,10 @@ details p {
   .about-section .section-inner,
   .trust-section .section-inner,
   .faq-section .section-inner,
-  .final-cta .section-inner,
-  .blog-placeholder .section-inner {
+    .final-cta .section-inner,
+    .blog-placeholder .section-inner,
+    .thank-you-hero-inner,
+    .thank-you-email-section .ebook-inner {
     padding-top: 50px;
     padding-bottom: 56px;
   }
@@ -1198,7 +1466,8 @@ details p {
   .steps-grid,
   .pricing-grid,
   .card-grid,
-  .footer-grid {
+  .footer-grid,
+  .thank-you-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1787,8 +2056,30 @@ details p {
     font-size: 38px;
   }
 
+  .thank-you-page h1 {
+    font-size: 36px;
+  }
+
   .ebook-page h2 {
     font-size: 32px;
+  }
+
+  .thank-you-fold-note {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .thank-you-bonus-panel {
+    padding: 20px;
+  }
+
+  .thank-you-download-wrap {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .thank-you-download-wrap img {
+    width: min(62vw, 190px);
   }
 
   .ebook-chapter-grid {
