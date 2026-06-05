@@ -8,6 +8,7 @@ import {
   Clock3,
   ClipboardCheck,
   CreditCard,
+  Download,
   FileText,
   HelpCircle,
   Mail,
@@ -30,6 +31,7 @@ const emailAddress = "hello@podmoremedia.com";
 const reviewUrl = `mailto:${emailAddress}?subject=Free%20Marketing%20Review%20Request`;
 const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
+const guideDownloadUrl = "https://www.podmoremedia.com/d1707/easy-ai-marketing-for-plumbers-FINAL.pdf";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -746,6 +748,93 @@ function BlogPage() {
   );
 }
 
+function ThankYouPage() {
+  const confirmationSteps = [
+    "Confirm your subscription",
+    "Receive your Bonus 25 Prompts Quick Reference Guide (printable cheat sheet)",
+    "Start your Free 7-day email course with tips for using the prompts",
+  ];
+
+  const guideSections = [
+    ["Get Found", "Local SEO prompts for better visibility"],
+    ["Build Trust", "Website copy prompts that convert visitors"],
+    ["Stay Visible", "Social media prompts for consistent posting"],
+    ["Get Reviews", "Reputation prompts for more Google reviews"],
+    ["Keep Customers", "Email prompts for repeat business"],
+  ];
+
+  return (
+    <main className="ebook-page thank-you-page">
+      <section className="thank-you-hero">
+        <div className="ebook-inner thank-you-hero-inner">
+          <div className="thank-you-copy">
+            <p className="ebook-preheadline">Purchase complete - one important step left</p>
+            <h1>Thank You for Your Purchase!</h1>
+            <p className="ebook-subheadline">Before you grab the main guide, please check your email and confirm your subscription so we can send your unannounced bonus eBook.</p>
+            <p className="thank-you-fold-note">Aweber requires double opt-in, so the bonus can only be delivered after you click the confirmation link in that email.</p>
+          </div>
+
+          <div className="thank-you-bonus-panel">
+            <p className="ebook-eyebrow">Action required</p>
+            <h2><strong>Check Your Email for a BONUS</strong></h2>
+            <p>We've sent you a confirmation email. Click the link in that email to:</p>
+            <div className="thank-you-check-list">
+              {confirmationSteps.map((step) => (
+                <div key={step}>
+                  <CheckCircle2 size={21} />
+                  <span>{step}</span>
+                </div>
+              ))}
+            </div>
+            <p className="thank-you-help">
+              Can't find the email? Check your spam/junk folder. Still nothing? Email <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="thank-you-email-section">
+        <div className="ebook-inner thank-you-grid">
+          <div className="thank-you-panel thank-you-download-card">
+            <p className="ebook-eyebrow">Main guide</p>
+            <h2>Your Easy AI Marketing for Plumbers guide is ready.</h2>
+            <div className="thank-you-download-wrap">
+              <img src="/assets/plumber-cover.png" alt="Easy AI Marketing for Plumbers guide cover" />
+              <div>
+                <p>Download the main guide now, then come back to your inbox to confirm your bonus.</p>
+                <a className="ebook-buy-button thank-you-download-button" href={guideDownloadUrl} target="_blank" rel="noreferrer">
+                  <Download size={18} />
+                  <span>Download Your Guide Now</span>
+                  <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="thank-you-panel">
+            <p className="ebook-eyebrow">What you bought</p>
+            <h2>What's Inside the Main Guide?</h2>
+            <p>25 practical ChatGPT prompts organised into 5 sections:</p>
+            <div className="thank-you-section-list">
+              {guideSections.map(([title, body]) => (
+                <div key={title}>
+                  <Sparkles size={20} />
+                  <p><strong>{title}</strong> - {body}</p>
+                </div>
+              ))}
+            </div>
+            <p className="thank-you-save-note">
+              Each prompt takes about 2 minutes to run. Each output saves you 30+ minutes of staring at a blank screen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <EbookFooter />
+    </main>
+  );
+}
+
 const ebookChapters = [
   {
     title: "Get Found - Local SEO Prompts",
@@ -1007,6 +1096,10 @@ export default function App() {
 
   if (path === "/easy-ai-marketing-for-plumbers") {
     return <EbookLandingPage />;
+  }
+
+  if (path === "/thank-you-1909") {
+    return <ThankYouPage />;
   }
 
   return <Homepage />;
