@@ -32,6 +32,8 @@ const reviewUrl = `mailto:${emailAddress}?subject=Free%20Marketing%20Review%20Re
 const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
 const guideDownloadUrl = "https://www.podmoremedia.com/d1707/easy-ai-marketing-for-plumbers-FINAL.pdf";
+const brandQuestionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdNn7mpYkXjtNY6o5LulGNIlCfwAeQuZWNFQNEnVfS0nwURfA/viewform?usp=sharing&ouid=103953435540146859973";
+const onboardingCallUrl = "https://calendly.com/podmoremedia/free-15-minute-marketing-review";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -215,6 +217,65 @@ const faqs = [
     answer: "Starter is best for getting started. Growth is best for most contractors who want consistent lead-building assets. Pro is best if you want a more complete growth system.",
   },
 ];
+
+const serviceThankYouPages = {
+  starter: {
+    path: "/thank-you-starter-2503",
+    packageName: "Starter Package",
+    price: "£99 per month",
+    headline: "Welcome to Podmore Media Starter Package",
+    subhead: "You're all set. Here's what happens next.",
+    intro: "Thank you for joining the Podmore Media Starter Package. Your subscription is now active, and we are ready to start building the foundations for your monthly marketing.",
+    callTitle: "Book Your Onboarding Call",
+    callTime: "15 minutes",
+    callBody: "We'll review your questionnaire and discuss your first month of content.",
+    afterTitle: "What happens after the questionnaire",
+    afterItems: [
+      "We create your customised Review Request Templates",
+      "You receive your Monthly Content Checklist",
+      "We begin work on your first month of content",
+    ],
+    contactLabel: "Questions?",
+  },
+  growth: {
+    path: "/thank-you-growth-1004",
+    packageName: "Growth Package",
+    price: "£249 per month",
+    headline: "Welcome to Podmore Media Growth",
+    subhead: "Let's get you more enquiries.",
+    intro: "Thank you for choosing Podmore Media Growth. Your subscription is now active, and we are ready to plan practical marketing that helps your business stay visible and trusted.",
+    callTitle: "Book Your Onboarding Call",
+    callTime: "15 minutes",
+    callBody: "We'll review your questionnaire and plan your first content strategy.",
+    afterTitle: "What happens after the questionnaire",
+    afterItems: [
+      "We create your Brand Voice Document",
+      "You receive customised Review Request Templates",
+      "You get your Monthly Content Game Plan",
+      "We begin work on your first month of content",
+    ],
+    contactLabel: "Questions?",
+  },
+  pro: {
+    path: "/thank-you-pro-2211",
+    packageName: "Pro Package",
+    price: "£499 per month",
+    headline: "Welcome to Podmore Media Pro",
+    subhead: "We're your marketing department now.",
+    intro: "Thank you for choosing Podmore Media Pro. Your full-service marketing subscription is now active, and we are ready to get properly under the bonnet of your business.",
+    callTitle: "Book Your Strategy Call",
+    callTime: "30 minutes",
+    callBody: "A deeper onboarding call to discuss your business, goals, services, customers, and content strategy.",
+    afterTitle: "What happens after the questionnaire",
+    afterItems: [
+      "We create your complete Brand Voice Document",
+      "You receive all customised templates and documents",
+      "We schedule your monthly strategy calls",
+      "We begin work immediately",
+    ],
+    contactLabel: "Your dedicated contact:",
+  },
+} as const;
 
 const legalPages = {
   terms: {
@@ -748,6 +809,92 @@ function BlogPage() {
   );
 }
 
+function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPages)[keyof typeof serviceThankYouPages] }) {
+  return (
+    <main className="service-thanks-page">
+      <Header />
+
+      <section className="service-thanks-hero section-dark">
+        <div className="section-inner service-thanks-hero-inner">
+          <div>
+            <p className="eyebrow">Subscription active</p>
+            <h1>{page.headline}</h1>
+            <p className="hero-lead">{page.subhead}</p>
+            <p className="service-thanks-intro">{page.intro}</p>
+          </div>
+          <aside className="service-thanks-summary" aria-label={`${page.packageName} summary`}>
+            <BadgeCheck size={34} />
+            <span>{page.packageName}</span>
+            <strong>{page.price}</strong>
+            <p>Your onboarding starts with two simple actions below.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section className="service-thanks-next section-white">
+        <div className="section-inner">
+          <div className="section-heading centered">
+            <p className="eyebrow">Next steps</p>
+            <h2>Let Us Get the Right Details From You</h2>
+            <p>These two steps help us understand your business, your tone of voice, and what needs to happen first.</p>
+          </div>
+
+          <div className="service-thanks-action-grid">
+            <article className="service-thanks-action-card">
+              <span className="step-number">1</span>
+              <FileText size={30} />
+              <h3>Complete Your Brand Voice Questionnaire</h3>
+              <p>Spend 5 minutes helping us understand your business so we can create marketing that sounds like you.</p>
+              <a className="button button-primary" href={brandQuestionnaireUrl} target="_blank" rel="noreferrer">
+                <span>Start Questionnaire</span>
+                <ArrowRight size={18} />
+              </a>
+            </article>
+
+            <article className="service-thanks-action-card">
+              <span className="step-number">2</span>
+              <Clock3 size={30} />
+              <h3>{page.callTitle}</h3>
+              <p><strong>{page.callTime}.</strong> {page.callBody}</p>
+              <a className="button button-dark" href={onboardingCallUrl} target="_blank" rel="noreferrer">
+                <span>Book Your Call</span>
+                <ArrowRight size={18} />
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-thanks-after section-light">
+        <div className="section-inner service-thanks-after-grid">
+          <div>
+            <p className="eyebrow">What happens next</p>
+            <h2>{page.afterTitle}</h2>
+            <p>Once we have your questionnaire and call booked, we can move from payment confirmation into practical delivery.</p>
+          </div>
+          <div className="service-thanks-list">
+            {page.afterItems.map((item) => (
+              <div key={item}>
+                <CheckCircle2 size={20} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="service-thanks-contact section-red">
+        <div className="section-inner centered">
+          <h2>Need Help With Anything?</h2>
+          <p>{page.contactLabel} <a href={`mailto:${emailAddress}`}>{emailAddress}</a></p>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+
 function ThankYouPage() {
   const confirmationSteps = [
     "Confirm your subscription",
@@ -1092,6 +1239,18 @@ export default function App() {
 
   if (path === "/blog") {
     return <BlogPage />;
+  }
+
+  if (path === serviceThankYouPages.starter.path) {
+    return <ServicePackageThankYouPage page={serviceThankYouPages.starter} />;
+  }
+
+  if (path === serviceThankYouPages.growth.path) {
+    return <ServicePackageThankYouPage page={serviceThankYouPages.growth} />;
+  }
+
+  if (path === serviceThankYouPages.pro.path) {
+    return <ServicePackageThankYouPage page={serviceThankYouPages.pro} />;
   }
 
   if (path === "/easy-ai-marketing-for-plumbers") {
