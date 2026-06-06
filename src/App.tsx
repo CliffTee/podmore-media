@@ -770,7 +770,7 @@ function ThankYouPage() {
           <div className="thank-you-copy">
             <p className="ebook-preheadline">Purchase complete - one important step left</p>
             <h1>Thank You for Your Purchase!</h1>
-            <p className="ebook-subheadline">Before you grab the main guide, please check your email and confirm your subscription so we can send your unannounced bonus eBook.</p>
+            <p className="ebook-subheadline">Before you grab the main guide, please check your email and confirm your subscription so we can send your unannounced bonus eBook and 7-day email course.</p>
             <p className="thank-you-fold-note">Aweber requires double opt-in, so the bonus can only be delivered after you click the confirmation link in that email.</p>
           </div>
 
