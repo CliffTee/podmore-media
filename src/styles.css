@@ -1286,6 +1286,39 @@ details p {
   text-transform: uppercase;
 }
 
+.thank-you-hero-notes {
+  display: grid;
+  gap: 10px;
+  max-width: 650px;
+  margin-top: 28px;
+}
+
+.thank-you-hero-notes div {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(17, 23, 26, 0.18);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  font-weight: 820;
+  line-height: 1.42;
+}
+
+.thank-you-hero-notes svg {
+  color: #ffffff;
+}
+
+.thank-you-hero-notes a {
+  color: #ffffff;
+  font-weight: 950;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
 .thank-you-bonus-panel {
   border-top: 6px solid #d9271d;
 }

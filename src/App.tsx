@@ -1025,6 +1025,20 @@ function ThankYouPage() {
                 <ArrowRight size={18} />
               </a>
             </div>
+            <div className="thank-you-hero-notes" aria-label="What happens next">
+              <div>
+                <CheckCircle2 size={18} />
+                <span>Main guide opens instantly as a PDF.</span>
+              </div>
+              <div>
+                <Mail size={18} />
+                <span>Your bonus eBook and 7-day email course are being sent separately by email.</span>
+              </div>
+              <div>
+                <HelpCircle size={18} />
+                <span>Need help? Email <a href={`mailto:${emailAddress}`}>{emailAddress}</a>.</span>
+              </div>
+            </div>
           </div>
 
           <div className="thank-you-download-panel">
