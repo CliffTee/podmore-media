@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import {
   ArrowRight,
@@ -809,6 +809,100 @@ function BlogPage() {
   );
 }
 
+function BridgePage() {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [message, setMessage] = useState("Checking your Stripe purchase...");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    if (!sessionId) {
+      setStatus("error");
+      setMessage("We could not find your checkout session. Please enter your email below, or contact us if you need help.");
+      return;
+    }
+
+    const checkedSessionId = sessionId;
+
+    async function loadStripeEmail() {
+      try {
+        const response = await fetch(`/api/stripe-session?session_id=${encodeURIComponent(checkedSessionId)}`);
+        const data = await response.json();
+
+        if (!response.ok || !data.email) {
+          throw new Error(data.error || "Unable to retrieve checkout email");
+        }
+
+        setEmail(data.email);
+        setStatus("ready");
+        setMessage("We found the email from your checkout. Add your first name and we will send everything to the right place.");
+      } catch {
+        setStatus("error");
+        setMessage("We could not automatically retrieve your checkout email. Please enter it below, or contact us if you need help.");
+      }
+    }
+
+    loadStripeEmail();
+  }, []);
+
+  return (
+    <main className="ebook-page bridge-page">
+      <section className="bridge-hero-section">
+        <div className="ebook-inner bridge-hero-inner">
+          <div className="bridge-copy">
+            <p className="ebook-preheadline">One last step</p>
+            <h1>We need your email to know where to send your ebook and unannounced bonus</h1>
+            <p className="ebook-subheadline">
+              Confirm the best email address and add your first name so we can send your guide, bonus resource, and follow-up course to the right inbox.
+            </p>
+            <div className={`bridge-status ${status === "error" ? "error" : ""}`} role="status">
+              {status === "loading" ? <Clock3 size={18} /> : status === "error" ? <HelpCircle size={18} /> : <CheckCircle2 size={18} />}
+              <span>{message}</span>
+            </div>
+          </div>
+
+          <form className="bridge-form" action="/thank-you-1909" method="get">
+            <p className="ebook-eyebrow">Send my eBook</p>
+            <h2>Where should we send it?</h2>
+            <input type="hidden" name="redirect" value="/thank-you-1909" />
+            <label>
+              <span>First name</span>
+              <input
+                name="name"
+                type="text"
+                autoComplete="given-name"
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span>Email address</span>
+              <input
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
+            </label>
+            <button className="ebook-buy-button" type="submit" disabled={status === "loading" || !email || !firstName}>
+              <Send size={18} />
+              <span>Send me my eBook</span>
+              <ArrowRight size={18} />
+            </button>
+          </form>
+        </div>
+      </section>
+      <EbookFooter />
+    </main>
+  );
+}
+
 function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPages)[keyof typeof serviceThankYouPages] }) {
   return (
     <main className="service-thanks-page">
@@ -1239,6 +1333,10 @@ export default function App() {
 
   if (path === "/blog") {
     return <BlogPage />;
+  }
+
+  if (path === "/ty-2512") {
+    return <BridgePage />;
   }
 
   if (path === serviceThankYouPages.starter.path) {
