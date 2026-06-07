@@ -1883,6 +1883,19 @@ details p {
   opacity: 0.62;
 }
 
+.bridge-privacy-note {
+  margin: 0;
+  color: #626a6f;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.bridge-aweber-pixel {
+  display: none;
+}
+
 .ebook-inner {
   position: relative;
   z-index: 1;

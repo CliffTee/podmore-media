@@ -876,10 +876,17 @@ function BridgePage() {
             </div>
           </div>
 
-          <form className="bridge-form" action="/thank-you-1909" method="get">
+          <form className="bridge-form" action="https://www.aweber.com/scripts/addlead.pl" method="post" acceptCharset="UTF-8">
             <p className="ebook-eyebrow">Send my eBook</p>
             <h2>Where should we send it?</h2>
-            <input type="hidden" name="redirect" value="/thank-you-1909" />
+            <input type="hidden" name="meta_web_form_id" value="153299009" />
+            <input type="hidden" name="meta_split_id" value="" />
+            <input type="hidden" name="listname" value="awlist6960127" />
+            <input type="hidden" name="redirect" value="https://www.podmoremedia.com/thank-you-1909" />
+            <input type="hidden" name="meta_adtracking" value="pmcom-ty-2512" />
+            <input type="hidden" name="meta_message" value="1" />
+            <input type="hidden" name="meta_required" value="name,email" />
+            <input type="hidden" name="meta_tooltip" value="" />
             <label>
               <span>First name</span>
               <input
@@ -907,6 +914,8 @@ function BridgePage() {
               <span>Send me my eBook</span>
               <ArrowRight size={18} />
             </button>
+            <p className="bridge-privacy-note">We will never share your details with anyone.</p>
+            <img className="bridge-aweber-pixel" src="https://forms.aweber.com/form/displays.htm?id=jKzMTJycDAyc" alt="" />
           </form>
         </div>
       </section>
