@@ -1782,6 +1782,13 @@ details p {
   background: rgba(17, 23, 26, 0.34);
 }
 
+.bridge-status a {
+  color: #ffffff;
+  font-weight: 950;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
 .bridge-form {
   display: grid;
   gap: 16px;

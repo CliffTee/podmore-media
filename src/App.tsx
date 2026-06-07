@@ -814,6 +814,7 @@ function BridgePage() {
   const [firstName, setFirstName] = useState("");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
   const [message, setMessage] = useState("Checking your Stripe purchase...");
+  const [showSupportLink, setShowSupportLink] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -821,7 +822,8 @@ function BridgePage() {
 
     if (!sessionId) {
       setStatus("error");
-      setMessage("We could not find your checkout session. Please enter your email below, or contact us if you need help.");
+      setShowSupportLink(true);
+      setMessage("We could not find your checkout session. Please enter your email in the form, or");
       return;
     }
 
@@ -838,10 +840,12 @@ function BridgePage() {
 
         setEmail(data.email);
         setStatus("ready");
+        setShowSupportLink(false);
         setMessage("We found the email from your checkout. Add your first name and we will send everything to the right place.");
       } catch {
         setStatus("error");
-        setMessage("We could not automatically retrieve your checkout email. Please enter it below, or contact us if you need help.");
+        setShowSupportLink(true);
+        setMessage("We could not automatically retrieve your checkout email. Please enter it in the form, or");
       }
     }
 
@@ -860,7 +864,15 @@ function BridgePage() {
             </p>
             <div className={`bridge-status ${status === "error" ? "error" : ""}`} role="status">
               {status === "loading" ? <Clock3 size={18} /> : status === "error" ? <HelpCircle size={18} /> : <CheckCircle2 size={18} />}
-              <span>{message}</span>
+              <span>
+                {message}
+                {showSupportLink && (
+                  <>
+                    {" "}
+                    <a href={`mailto:${emailAddress}`}>contact us if you need help</a>.
+                  </>
+                )}
+              </span>
             </div>
           </div>
 
