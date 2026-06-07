@@ -823,7 +823,7 @@ function BridgePage() {
     if (!sessionId) {
       setStatus("error");
       setShowSupportLink(true);
-      setMessage("We could not find your checkout session. Please enter your email in the form, or");
+      setMessage("Please enter your name and email in the form, or");
       return;
     }
 
@@ -841,11 +841,11 @@ function BridgePage() {
         setEmail(data.email);
         setStatus("ready");
         setShowSupportLink(false);
-        setMessage("We found the email from your checkout. Add your first name and we will send everything to the right place.");
+        setMessage("Add your first name in the form and we will send everything straight to you.");
       } catch {
         setStatus("error");
         setShowSupportLink(true);
-        setMessage("We could not automatically retrieve your checkout email. Please enter it in the form, or");
+        setMessage("Please enter your name and email in the form, or");
       }
     }
 
