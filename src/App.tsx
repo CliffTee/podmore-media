@@ -1041,11 +1041,26 @@ function ThankYouPage() {
         <div className="ebook-inner thank-you-grid">
           <div className="thank-you-panel thank-you-bonus-panel">
             <p className="ebook-eyebrow">Bonus delivery</p>
-            <h2>Your bonus eBook and email course are on their way.</h2>
-            <p>Your unannounced bonus eBook and 7-day email course are being sent to the email address you entered on the previous page.</p>
-            <p className="thank-you-help">
-              Can't find the email? Check your spam/junk folder. Still nothing? Email <a href={`mailto:${emailAddress}`}>{emailAddress}</a>
-            </p>
+            <h2>Your Unannounced Bonus is on Its Way</h2>
+            <h3>What's happening now:</h3>
+            <p>Your unannounced bonus eBook and 7-day email course are being delivered to the email address you just confirmed.</p>
+            <h3>What to expect:</h3>
+            <div className="thank-you-bonus-list">
+              <div>
+                <CheckCircle2 size={20} />
+                <span><strong>Immediate:</strong> Your bonus eBook (25 AI prompts only, condensed edition)</span>
+              </div>
+              <div>
+                <CheckCircle2 size={20} />
+                <span><strong>Over the next 7 days:</strong> Daily emails packed with actionable AI marketing strategies for your plumbing business</span>
+              </div>
+            </div>
+            <h3>Can't find the email?</h3>
+            <ol className="thank-you-help-steps">
+              <li>Check your spam or junk folder</li>
+              <li>Search for "Podmore Media" in your inbox</li>
+              <li>Still nothing? Email <a href={`mailto:${emailAddress}`}>{emailAddress}</a> and we'll sort it out</li>
+            </ol>
           </div>
 
           <div className="thank-you-panel">

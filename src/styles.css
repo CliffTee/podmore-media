@@ -1296,12 +1296,66 @@ details p {
   line-height: 0.98;
 }
 
+.thank-you-bonus-panel h3 {
+  margin-top: 24px;
+  color: #11171a;
+  font-size: 19px;
+  line-height: 1.15;
+}
+
 .thank-you-bonus-panel > p:not(.ebook-eyebrow),
 .thank-you-bonus-panel .thank-you-help {
   margin-top: 16px;
   color: #475056;
   font-size: 17px;
   line-height: 1.55;
+}
+
+.thank-you-bonus-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.thank-you-bonus-list div {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 16px;
+  border: 1px solid #e5e0db;
+  border-radius: 8px;
+  background: #f7f7f4;
+}
+
+.thank-you-bonus-list svg {
+  color: #d9271d;
+}
+
+.thank-you-bonus-list span {
+  color: #11171a;
+  font-size: 16px;
+  font-weight: 760;
+  line-height: 1.42;
+}
+
+.thank-you-help-steps {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding-left: 22px;
+  color: #475056;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.thank-you-help-steps a {
+  color: #11171a;
+  font-weight: 950;
+  text-decoration-color: #d9271d;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .thank-you-download-panel {
