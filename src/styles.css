@@ -1871,6 +1871,14 @@ details p {
   box-shadow: 0 0 0 3px rgba(217, 39, 29, 0.14);
 }
 
+.bridge-field-note {
+  margin-top: -2px;
+  color: #626a6f;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.42;
+}
+
 .bridge-form .ebook-buy-button {
   width: 100%;
   margin-top: 6px;

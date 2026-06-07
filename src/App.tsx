@@ -908,6 +908,7 @@ function BridgePage() {
                 onChange={(event) => setEmail(event.target.value)}
                 required
               />
+              <small className="bridge-field-note">Use the email address you check personally. Shared inboxes like info@ or admin@ may require an extra confirmation step.</small>
             </label>
             <button className="ebook-buy-button" type="submit" disabled={status === "loading" || !email || !firstName}>
               <Send size={18} />
