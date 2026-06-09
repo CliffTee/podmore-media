@@ -1057,8 +1057,6 @@ function StarterBridgePage() {
 
   return (
     <main className="service-bridge-page">
-      <Header />
-
       <section className="service-bridge-hero section-dark">
         <div className="section-inner service-bridge-hero-inner">
           <div className="service-bridge-copy">
@@ -1115,12 +1113,10 @@ function StarterBridgePage() {
               <span>Continue to Next Step</span>
               <ArrowRight size={18} />
             </button>
-            <p className="service-bridge-privacy">We'll only use these details to send your onboarding information and service updates. We will never share your details with anyone.</p>
+            <p className="service-bridge-privacy">We will never share your details with anyone.</p>
           </form>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

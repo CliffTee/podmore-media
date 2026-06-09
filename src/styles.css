@@ -1265,7 +1265,7 @@ details p {
   grid-template-columns: minmax(0, 1fr) minmax(390px, 0.78fr);
   gap: clamp(28px, 6vw, 70px);
   align-items: center;
-  min-height: 620px;
+  min-height: 100vh;
   padding: 70px 0 78px;
 }
 
