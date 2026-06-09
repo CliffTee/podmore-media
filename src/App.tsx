@@ -34,6 +34,7 @@ const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
 const guideDownloadUrl = "https://www.podmoremedia.com/d1707/easy-ai-marketing-for-plumbers-FINAL.pdf";
 const brandQuestionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdNn7mpYkXjtNY6o5LulGNIlCfwAeQuZWNFQNEnVfS0nwURfA/viewform?usp=sharing&ouid=103953435540146859973";
 const onboardingCallUrl = "https://calendly.com/podmoremedia/free-15-minute-marketing-review";
+const starterBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFADXfNOAV7o1aYU4WLhKjvAWkxq8WeG1AD4nPCduGW4Eji7uGf5biKKfoEDCaPJ8gty5AsYUDP8ZgNwCLRng4OlkNDiYslV-w8dGxZk7xTmUgt51vpImT9g-i211EnVg2EGvzozxgLcarlmiVLh__dfdm8StPzjGz_Gy_I8h0rqmJ8UX-99nzrChoVdN0tjslMkaHa5h-ScFpQg==";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -1011,6 +1012,119 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
   );
 }
 
+function StarterBridgePage() {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [message, setMessage] = useState("Checking your Stripe purchase...");
+  const [showSupportLink, setShowSupportLink] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    if (!sessionId) {
+      setStatus("error");
+      setShowSupportLink(true);
+      setMessage("Please enter your name and email in the form, or");
+      return;
+    }
+
+    const checkedSessionId = sessionId;
+
+    async function loadStripeEmail() {
+      try {
+        const response = await fetch(`/api/stripe-session?session_id=${encodeURIComponent(checkedSessionId)}`);
+        const data = await response.json();
+
+        if (!response.ok || !data.email) {
+          throw new Error(data.error || "Unable to retrieve checkout email");
+        }
+
+        setEmail(data.email);
+        setStatus("ready");
+        setShowSupportLink(false);
+        setMessage("Add your first name in the form and we will send your Starter onboarding details straight to you.");
+      } catch {
+        setStatus("error");
+        setShowSupportLink(true);
+        setMessage("Please enter your name and email in the form, or");
+      }
+    }
+
+    loadStripeEmail();
+  }, []);
+
+  return (
+    <main className="service-bridge-page">
+      <Header />
+
+      <section className="service-bridge-hero section-dark">
+        <div className="section-inner service-bridge-hero-inner">
+          <div className="service-bridge-copy">
+            <p className="eyebrow">Starter Package onboarding</p>
+            <h1>One Quick Step Before We Get Started</h1>
+            <p className="hero-lead">
+              Thanks for purchasing Podmore Media Starter. Your £99 payment was successful.
+            </p>
+            <p className="service-bridge-intro">Please confirm your details so we can send your welcome email and get started.</p>
+            <div className={`service-bridge-status ${status === "error" ? "error" : ""}`} role="status">
+              {status === "loading" ? <Clock3 size={18} /> : status === "error" ? <HelpCircle size={18} /> : <CheckCircle2 size={18} />}
+              <span>
+                {message}
+                {showSupportLink && (
+                  <>
+                    {" "}
+                    <a href={`mailto:${emailAddress}`}>contact us if you need help</a>.
+                  </>
+                )}
+              </span>
+            </div>
+          </div>
+
+          <form className="service-bridge-form" action={starterBrevoFormUrl} method="post">
+            <p className="eyebrow">Starter Package</p>
+            <h2>Confirm your details</h2>
+            <label>
+              <span>First name</span>
+              <input
+                name="FIRSTNAME"
+                type="text"
+                autoComplete="given-name"
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span>Email address</span>
+              <input
+                name="EMAIL"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                required
+              />
+            </label>
+            <input className="service-bridge-honeypot" type="text" name="email_address_check" value="" tabIndex={-1} autoComplete="off" readOnly />
+            <input type="hidden" name="locale" value="en" />
+            <input type="hidden" name="html_type" value="simple" />
+            <button className="button button-primary" type="submit" disabled={status === "loading" || !email || !firstName}>
+              <Send size={18} />
+              <span>Continue to Next Step</span>
+              <ArrowRight size={18} />
+            </button>
+            <p className="service-bridge-privacy">We'll only use these details to send your onboarding information and service updates. We will never share your details with anyone.</p>
+          </form>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+
 function ThankYouPage() {
   const guideSections = [
     ["Get Found", "Local SEO prompts for better visibility"],
@@ -1372,6 +1486,10 @@ export default function App() {
 
   if (path === "/ty-2512") {
     return <BridgePage />;
+  }
+
+  if (path === "/ty-starter-3110") {
+    return <StarterBridgePage />;
   }
 
   if (path === serviceThankYouPages.starter.path) {

@@ -1239,6 +1239,160 @@ details p {
   text-underline-offset: 5px;
 }
 
+.service-bridge-page {
+  min-height: 100vh;
+  background: var(--light);
+}
+
+.service-bridge-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-bridge-hero::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  content: "";
+  pointer-events: none;
+}
+
+.service-bridge-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(390px, 0.78fr);
+  gap: clamp(28px, 6vw, 70px);
+  align-items: center;
+  min-height: 620px;
+  padding: 70px 0 78px;
+}
+
+.service-bridge-copy {
+  max-width: 760px;
+}
+
+.service-bridge-intro {
+  max-width: 700px;
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.service-bridge-status {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 640px;
+  margin-top: 24px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  font-weight: 820;
+  line-height: 1.45;
+}
+
+.service-bridge-status svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #ffffff;
+}
+
+.service-bridge-status.error {
+  background: rgba(17, 19, 41, 0.36);
+}
+
+.service-bridge-status a {
+  color: #ffffff;
+  font-weight: 950;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.service-bridge-form {
+  display: grid;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 32px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 6px solid var(--red);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--navy);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.24);
+}
+
+.service-bridge-form .eyebrow {
+  margin-bottom: 0;
+  color: var(--red);
+}
+
+.service-bridge-form h2 {
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1;
+}
+
+.service-bridge-form label {
+  display: grid;
+  gap: 7px;
+  color: #2b3445;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.service-bridge-form input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 13px;
+  border: 1px solid #cfd6e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #151821;
+  font: inherit;
+  font-weight: 750;
+  outline: none;
+}
+
+.service-bridge-form input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(238, 43, 49, 0.14);
+}
+
+.service-bridge-form .button {
+  width: 100%;
+  margin-top: 6px;
+  border: 0;
+  cursor: pointer;
+}
+
+.service-bridge-form .button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.service-bridge-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+
+.service-bridge-privacy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .thank-you-page {
   background: #f4f4f1;
 }
@@ -1543,7 +1697,8 @@ details p {
   .about-grid,
   .lead-grid,
   .service-thanks-hero-inner,
-  .service-thanks-after-grid {
+  .service-thanks-after-grid,
+  .service-bridge-hero-inner {
     grid-template-columns: 1fr;
   }
 
@@ -1565,6 +1720,10 @@ details p {
 
   .service-thanks-summary {
     max-width: 440px;
+  }
+
+  .service-bridge-form {
+    max-width: 560px;
   }
 
   .thank-you-hero-inner {
@@ -1670,6 +1829,7 @@ details p {
     .service-thanks-next .section-inner,
     .service-thanks-after .section-inner,
     .service-thanks-contact .section-inner,
+    .service-bridge-hero-inner,
     .thank-you-hero-inner,
     .thank-you-email-section .ebook-inner {
     padding-top: 50px;
@@ -1711,7 +1871,8 @@ details p {
   }
 
   .service-thanks-summary,
-  .service-thanks-action-card .button {
+  .service-thanks-action-card .button,
+  .service-bridge-form {
     width: 100%;
   }
 
