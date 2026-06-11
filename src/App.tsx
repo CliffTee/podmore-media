@@ -36,6 +36,7 @@ const brandQuestionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdNn7mpY
 const onboardingCallUrl = "https://calendly.com/podmoremedia/free-15-minute-marketing-review";
 const starterBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFADXfNOAV7o1aYU4WLhKjvAWkxq8WeG1AD4nPCduGW4Eji7uGf5biKKfoEDCaPJ8gty5AsYUDP8ZgNwCLRng4OlkNDiYslV-w8dGxZk7xTmUgt51vpImT9g-i211EnVg2EGvzozxgLcarlmiVLh__dfdm8StPzjGz_Gy_I8h0rqmJ8UX-99nzrChoVdN0tjslMkaHa5h-ScFpQg==";
 const growthBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFACzpKCzMt087tRJGmOLVux-JiVFK4bB1fM854xPRBmRklx5CuNGotyusv0WsZMTgtDd4eoRz_T3-dx2j7RmovnhP4WXHA3dgD-hGSUubSgRstDZVt6h_nVBUbVY3mDpfiHzstsiDR3EdljJqrH5zG1TayM1X12m_M23I4shVmG6cacQvajhfRtP57b7UrZBerUM6NrlRSKP36g==";
+const proBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFAIPa5cT8zIp11_zfjBzt4X0Bc5ZSGWbqo7kGKK3KRldRKNCaWyeu-WmI301t4x9lghGENE_1JJAfkXgNHmn95SM5rFP2BuBsQvAB-1_izASaTkAW3fdPLgvUtottvEXaQsjwsxn1s4Ynr-LUi4cFxFUdZAA2wAQ9ePMRJmM-m0mA4avdeDQlO8sZ3U5RB5xmNGyaAVqzrInW9g==";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -1501,6 +1502,10 @@ export default function App() {
 
   if (path === "/ty-growth-1004") {
     return <PackageBridgePage packageName="Growth" packageLabel="Growth Package" price="£249" brevoFormUrl={growthBrevoFormUrl} />;
+  }
+
+  if (path === "/ty-pro-2211") {
+    return <PackageBridgePage packageName="Pro" packageLabel="Pro Package" price="£499" brevoFormUrl={proBrevoFormUrl} />;
   }
 
   if (path === serviceThankYouPages.starter.path) {
