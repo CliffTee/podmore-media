@@ -35,6 +35,7 @@ const guideDownloadUrl = "https://www.podmoremedia.com/d1707/easy-ai-marketing-f
 const brandQuestionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdNn7mpYkXjtNY6o5LulGNIlCfwAeQuZWNFQNEnVfS0nwURfA/viewform?usp=sharing&ouid=103953435540146859973";
 const onboardingCallUrl = "https://calendly.com/podmoremedia/free-15-minute-marketing-review";
 const starterBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFADXfNOAV7o1aYU4WLhKjvAWkxq8WeG1AD4nPCduGW4Eji7uGf5biKKfoEDCaPJ8gty5AsYUDP8ZgNwCLRng4OlkNDiYslV-w8dGxZk7xTmUgt51vpImT9g-i211EnVg2EGvzozxgLcarlmiVLh__dfdm8StPzjGz_Gy_I8h0rqmJ8UX-99nzrChoVdN0tjslMkaHa5h-ScFpQg==";
+const growthBrevoFormUrl = "https://da9ddc19.sibforms.com/serve/MUIFACzpKCzMt087tRJGmOLVux-JiVFK4bB1fM854xPRBmRklx5CuNGotyusv0WsZMTgtDd4eoRz_T3-dx2j7RmovnhP4WXHA3dgD-hGSUubSgRstDZVt6h_nVBUbVY3mDpfiHzstsiDR3EdljJqrH5zG1TayM1X12m_M23I4shVmG6cacQvajhfRtP57b7UrZBerUM6NrlRSKP36g==";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -1012,7 +1013,17 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
   );
 }
 
-function StarterBridgePage() {
+function PackageBridgePage({
+  packageName,
+  packageLabel,
+  price,
+  brevoFormUrl,
+}: {
+  packageName: string;
+  packageLabel: string;
+  price: string;
+  brevoFormUrl: string;
+}) {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
@@ -1044,7 +1055,7 @@ function StarterBridgePage() {
         setEmail(data.email);
         setStatus("ready");
         setShowSupportLink(false);
-        setMessage("Add your first name in the form and we will send your Starter onboarding details straight to you.");
+        setMessage(`Add your first name in the form and we will send your ${packageName} onboarding details straight to you.`);
       } catch {
         setStatus("error");
         setShowSupportLink(true);
@@ -1060,10 +1071,10 @@ function StarterBridgePage() {
       <section className="service-bridge-hero section-dark">
         <div className="section-inner service-bridge-hero-inner">
           <div className="service-bridge-copy">
-            <p className="eyebrow">Starter Package onboarding</p>
+            <p className="eyebrow">{packageLabel} onboarding</p>
             <h1>One Quick Step Before We Get Started</h1>
             <p className="hero-lead">
-              Thanks for purchasing Podmore Media Starter. Your £99 payment was successful.
+              Thanks for purchasing Podmore Media {packageName}. Your {price} payment was successful.
             </p>
             <p className="service-bridge-intro">Please confirm your details so we can send your welcome email and get started.</p>
             <div className={`service-bridge-status ${status === "error" ? "error" : ""}`} role="status">
@@ -1080,8 +1091,8 @@ function StarterBridgePage() {
             </div>
           </div>
 
-          <form className="service-bridge-form" action={starterBrevoFormUrl} method="post">
-            <p className="eyebrow">Starter Package</p>
+          <form className="service-bridge-form" action={brevoFormUrl} method="post">
+            <p className="eyebrow">{packageLabel}</p>
             <h2>Confirm your details</h2>
             <label>
               <span>First name</span>
@@ -1485,7 +1496,11 @@ export default function App() {
   }
 
   if (path === "/ty-starter-3110") {
-    return <StarterBridgePage />;
+    return <PackageBridgePage packageName="Starter" packageLabel="Starter Package" price="£99" brevoFormUrl={starterBrevoFormUrl} />;
+  }
+
+  if (path === "/ty-growth-1004") {
+    return <PackageBridgePage packageName="Growth" packageLabel="Growth Package" price="£249" brevoFormUrl={growthBrevoFormUrl} />;
   }
 
   if (path === serviceThankYouPages.starter.path) {
