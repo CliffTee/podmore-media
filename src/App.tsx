@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import type { FormEvent } from "react";
+import { Fragment, useEffect, useState } from "react";
+import type { FormEvent, ReactNode } from "react";
+import { blogArticles, type BlogArticle } from "./blogArticles";
 import {
   ArrowRight,
   BadgeCheck,
@@ -436,6 +437,37 @@ function Header() {
 function Homepage() {
   const [contactStatus, setContactStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
+  useEffect(() => {
+    const scrollToCurrentHash = (behavior: ScrollBehavior = "smooth") => {
+      if (!window.location.hash) return;
+
+      let targetId: string;
+      try {
+        targetId = decodeURIComponent(window.location.hash.slice(1));
+      } catch {
+        return;
+      }
+
+      document.getElementById(targetId)?.scrollIntoView({ behavior, block: "start" });
+    };
+
+    const frame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => scrollToCurrentHash("instant"));
+    });
+
+    const handleHashChange = () => scrollToCurrentHash("smooth");
+    const handleLoad = () => scrollToCurrentHash("instant");
+
+    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
   async function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setContactStatus("submitting");
@@ -796,17 +828,273 @@ function LegalPage({ page }: { page: typeof legalPages.terms }) {
   );
 }
 
-function BlogPage() {
+function setPageMetadata(title: string, description: string, path = "/", image = "/assets/podmore-media-logo-flat.png") {
+  const siteUrl = "https://podmoremedia.com";
+  const canonicalUrl = `${siteUrl}${path}`;
+  const imageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
+  document.title = `${title} | Podmore Media`;
+  let meta = document.querySelector('meta[name="description"]');
+
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute("name", "description");
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute("content", description);
+
+  const upsertMeta = (selector: string, attribute: "name" | "property", key: string, content: string) => {
+    let element = document.querySelector(selector);
+    if (!element) {
+      element = document.createElement("meta");
+      element.setAttribute(attribute, key);
+      document.head.appendChild(element);
+    }
+    element.setAttribute("content", content);
+  };
+
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+  canonical.setAttribute("href", canonicalUrl);
+
+  upsertMeta('meta[property="og:title"]', "property", "og:title", title);
+  upsertMeta('meta[property="og:description"]', "property", "og:description", description);
+  upsertMeta('meta[property="og:url"]', "property", "og:url", canonicalUrl);
+  upsertMeta('meta[property="og:image"]', "property", "og:image", imageUrl);
+  upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", title);
+  upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", description);
+  upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", imageUrl);
+}
+
+function BlogCard({ article, featured = false }: { article: BlogArticle; featured?: boolean }) {
   return (
-    <main className="legal-page">
+    <article className={`blog-card ${featured ? "featured" : ""}`}>
+      <a className="blog-card-image" href={`/blog/${article.slug}`} aria-label={`Read ${article.title}`}>
+        <img src={article.image} alt={article.imageAlt} />
+      </a>
+      <div className="blog-card-copy">
+        <div className="blog-meta">
+          <span>{article.category}</span>
+          <span>By {article.author}</span>
+          <time dateTime={article.publishedIso}>{article.published}</time>
+          <span>{article.readTime}</span>
+        </div>
+        <h2><a href={`/blog/${article.slug}`}>{article.title}</a></h2>
+        <p>{article.description}</p>
+        <a className="blog-read-link" href={`/blog/${article.slug}`}>
+          Read article <ArrowRight size={17} />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function BlogPage() {
+  useEffect(() => {
+    setPageMetadata(
+      "Marketing Advice for UK Trades",
+      "Practical local SEO, website, Google Business Profile, and AI marketing advice for UK trades and local service businesses.",
+      "/blog",
+    );
+  }, []);
+
+  const [featured, ...articles] = blogArticles;
+
+  return (
+    <main className="blog-page">
       <Header />
-      <section className="section-light blog-placeholder">
-        <div className="section-inner centered">
+      <section className="blog-hero section-dark">
+        <div className="section-inner">
           <p className="eyebrow">Podmore Media Blog</p>
-          <h1>Helpful Marketing Ideas for Local Trades</h1>
-          <p>Blog articles for home service contractors are coming soon.</p>
+          <h1>Practical Marketing Ideas for Local Trades</h1>
+          <p>Clear, useful advice on local visibility, websites, Google Business Profile, AI-assisted marketing, and building trust online.</p>
         </div>
       </section>
+      <section className="blog-index section-light">
+        <div className="section-inner">
+          <BlogCard article={featured} featured />
+          <div className="blog-grid">
+            {articles.map((article) => <BlogCard article={article} key={article.slug} />)}
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}
+
+function cleanArticleMarkdown(markdown: string) {
+  const replacements: Array<[string, string]> = [
+    ["â€”", "-"],
+    ["â€“", "-"],
+    ["â€™", "'"],
+    ["â€œ", "\""],
+    ["â€", "\""],
+    ["Â£", "£"],
+    ["Â°C", "°C"],
+  ];
+
+  let cleaned = markdown;
+  replacements.forEach(([from, to]) => {
+    cleaned = cleaned.split(from).join(to);
+  });
+
+  cleaned = cleaned
+    .replace(/^# .+\n+/, "")
+    .replace(/^\*Published:.*\n?/gm, "")
+    .replace(/^\*\*Meta Title:\*\*.*\n?/gm, "")
+    .replace(/^\*\*Meta Description:\*\*.*\n?/gm, "")
+    .replace(/^\*\*Suggested URL Slug:\*\*.*\n?/gm, "")
+    .replace(/^---\s*$/gm, "")
+    .replace(/\n## BVD Compliance Check[\s\S]*$/m, "")
+    .replace(/\n\*Word count:[\s\S]*$/m, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+
+  return cleaned;
+}
+
+function renderInlineMarkdown(text: string) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*)/g);
+
+  return parts.map((part, index) => {
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link) {
+      const href = link[2] === "/ebook" ? "/easy-ai-marketing-for-plumbers" : link[2];
+      return <a href={href} key={`${part}-${index}`}>{link[1]}</a>;
+    }
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return <em key={`${part}-${index}`}>{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
+}
+
+function ArticleMarkdown({ markdown, article }: { markdown: string; article: BlogArticle }) {
+  const blocks = cleanArticleMarkdown(markdown).split(/\n\s*\n/);
+
+  return (
+    <>
+      {blocks.map((block, index) => {
+        const lines = block.split("\n");
+        let renderedBlock: ReactNode;
+        if (block.startsWith("### ")) renderedBlock = <h3>{renderInlineMarkdown(block.slice(4))}</h3>;
+        else if (block.startsWith("## ")) renderedBlock = <h2>{renderInlineMarkdown(block.slice(3))}</h2>;
+        else if (lines.length > 1 && lines.slice(1).every((line) => /^[-*] /.test(line))) {
+          renderedBlock = (
+            <div className="blog-content-group">
+              <p>{renderInlineMarkdown(lines[0])}</p>
+              <ul>{lines.slice(1).map((line) => <li key={line}>{renderInlineMarkdown(line.slice(2))}</li>)}</ul>
+            </div>
+          );
+        } else if (lines.length > 1 && lines.slice(1).every((line) => /^> /.test(line))) {
+          renderedBlock = (
+            <div className="blog-content-group">
+              <p>{renderInlineMarkdown(lines[0])}</p>
+              <blockquote>{renderInlineMarkdown(lines.slice(1).map((line) => line.replace(/^>\s?/, "")).join(" "))}</blockquote>
+            </div>
+          );
+        } else if (lines.every((line) => /^[-*] /.test(line))) {
+          renderedBlock = <ul>{lines.map((line) => <li key={line}>{renderInlineMarkdown(line.slice(2))}</li>)}</ul>;
+        } else if (lines.every((line) => /^\d+\. /.test(line))) {
+          renderedBlock = <ol>{lines.map((line) => <li key={line}>{renderInlineMarkdown(line.replace(/^\d+\.\s/, ""))}</li>)}</ol>;
+        } else if (block.startsWith("> ")) {
+          renderedBlock = <blockquote>{renderInlineMarkdown(lines.map((line) => line.replace(/^>\s?/, "")).join(" "))}</blockquote>;
+        } else {
+          renderedBlock = <p>{renderInlineMarkdown(lines.join(" "))}</p>;
+        }
+
+        return (
+          <Fragment key={index}>
+            {renderedBlock}
+            {index === 2 && (
+              <aside className="blog-context-links" aria-label="Related articles">
+                <strong>Useful next reads</strong>
+                <span>
+                  <a href={`/blog/${article.contextualLinks[0].slug}`}>{article.contextualLinks[0].label}</a>
+                  {" or "}
+                  <a href={`/blog/${article.contextualLinks[1].slug}`}>{article.contextualLinks[1].label}</a>.
+                </span>
+              </aside>
+            )}
+          </Fragment>
+        );
+      })}
+    </>
+  );
+}
+
+function BlogArticlePage({ article }: { article: BlogArticle }) {
+  const [markdown, setMarkdown] = useState("");
+  const [loadError, setLoadError] = useState(false);
+  const relatedArticles = article.relatedSlugs
+    .map((slug) => blogArticles.find((item) => item.slug === slug))
+    .filter((item): item is BlogArticle => Boolean(item));
+
+  useEffect(() => {
+    setPageMetadata(article.title, article.description, `/blog/${article.slug}`, article.image);
+    fetch(article.contentUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error("Article content failed to load");
+        return response.text();
+      })
+      .then(setMarkdown)
+      .catch(() => setLoadError(true));
+  }, [article]);
+
+  return (
+    <main className="blog-page">
+      <Header />
+      <article className="blog-article">
+        <header className="blog-article-header section-dark">
+          <div className="section-inner">
+            <a className="blog-back-link" href="/blog">Back to the blog</a>
+            <div className="blog-meta">
+              <span>{article.category}</span>
+              <span>By {article.author}</span>
+              <time dateTime={article.publishedIso}>{article.published}</time>
+              <span>{article.readTime}</span>
+            </div>
+            <h1>{article.title}</h1>
+            <p>{article.description}</p>
+          </div>
+        </header>
+        <div className="blog-article-layout section-light">
+          <div className="section-inner">
+            <img className="blog-article-image" src={article.image} alt={article.imageAlt} />
+            <div className="blog-article-body">
+              {loadError && <p>Sorry, this article could not be loaded. Please return to the <a href="/blog">blog page</a>.</p>}
+              {!loadError && !markdown && <p>Loading article...</p>}
+              {markdown && <ArticleMarkdown markdown={markdown} article={article} />}
+              <aside className="blog-related">
+                <p className="eyebrow">Related reading</p>
+                <h2>Keep improving your local visibility</h2>
+                <div>
+                  {relatedArticles.map((related) => (
+                    <a href={`/blog/${related.slug}`} key={related.slug}>
+                      <span>{related.category}</span>
+                      <strong>{related.title}</strong>
+                      <ArrowRight size={18} />
+                    </a>
+                  ))}
+                </div>
+              </aside>
+              <aside className="blog-article-cta">
+                <h2>Need a simpler way to stay visible online?</h2>
+                <p>Podmore Media creates practical monthly marketing content for UK trades and local service businesses.</p>
+                <a className="button button-primary" href="/#pricing">See monthly packages <ArrowRight size={18} /></a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </article>
       <Footer />
     </main>
   );
@@ -1490,6 +1778,12 @@ export default function App() {
 
   if (path === "/blog") {
     return <BlogPage />;
+  }
+
+  if (path.startsWith("/blog/")) {
+    const slug = path.replace(/^\/blog\//, "").replace(/\/$/, "");
+    const article = blogArticles.find((item) => item.slug === slug);
+    if (article) return <BlogArticlePage article={article} />;
   }
 
   if (path === "/ty-2512") {
