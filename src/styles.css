@@ -2884,10 +2884,22 @@ details p {
 }
 
 .ebook-faq-list details {
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid #ffffff;
   border-radius: 8px;
-  background: rgba(17, 23, 26, 0.14);
-  color: #ffffff;
+  background: #ffffff;
+  color: #11171a;
+  box-shadow: 0 10px 24px rgba(105, 15, 10, 0.18);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.ebook-faq-list details:hover,
+.ebook-faq-list details[open] {
+  border-color: #f2cbc8;
+  background: #fff7f6;
+}
+
+.ebook-faq-list details:hover {
+  transform: translateY(-1px);
 }
 
 .ebook-faq-list summary {
@@ -2905,10 +2917,15 @@ details p {
   display: none;
 }
 
+.ebook-faq-list summary svg {
+  flex: 0 0 auto;
+  color: #d9271d;
+}
+
 .ebook-faq-list details p {
   margin: 0;
   padding: 0 18px 18px 48px;
-  color: rgba(255, 255, 255, 0.82);
+  color: #475056;
   line-height: 1.55;
 }
 
