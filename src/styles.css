@@ -1390,6 +1390,11 @@ details p {
   color: rgba(255, 255, 255, 0.76);
 }
 
+.blog-article-cta .button-primary,
+.blog-article-cta .button-primary:hover {
+  color: var(--white);
+}
+
 .service-thanks-page {
   background: var(--light);
 }
