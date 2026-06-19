@@ -1054,7 +1054,7 @@ function BlogArticlePage({ article }: { article: BlogArticle }) {
       <Header />
       <article className="blog-article">
         <header className="blog-article-header section-dark">
-          <div className="section-inner">
+          <div className="section-inner blog-article-container">
             <a className="blog-back-link" href="/blog">Back to the blog</a>
             <div className="blog-meta">
               <span>{article.category}</span>
@@ -1067,7 +1067,7 @@ function BlogArticlePage({ article }: { article: BlogArticle }) {
           </div>
         </header>
         <div className="blog-article-layout section-light">
-          <div className="section-inner">
+          <div className="section-inner blog-article-container">
             <img className="blog-article-image" src={article.image} alt={article.imageAlt} />
             <div className="blog-article-body">
               {loadError && <p>Sorry, this article could not be loaded. Please return to the <a href="/blog">blog page</a>.</p>}
