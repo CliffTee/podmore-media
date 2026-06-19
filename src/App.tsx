@@ -910,7 +910,7 @@ function BlogPage() {
       <section className="blog-hero section-dark">
         <div className="section-inner">
           <p className="eyebrow">Podmore Media Blog</p>
-          <h1>Practical Marketing Ideas for Local Trades</h1>
+          <h1>Practical Marketing Ideas for Trades and Local Service Businesses</h1>
           <p>Clear, useful advice on local visibility, websites, Google Business Profile, AI-assisted marketing, and building trust online.</p>
         </div>
       </section>
