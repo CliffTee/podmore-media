@@ -231,7 +231,7 @@ Your competitors are figuring this out. Some already have. The question isn't wh
 
 ---
 
-*Ready to implement AI marketing in your trade business? Our ebook gives you the exact prompts and systems: [Easy AI Marketing for Plumbers](/ebook)*
+*Ready to implement AI marketing in your trade business? Our ebook gives you the exact prompts and systems:* [Easy AI Marketing for Plumbers](/easy-ai-marketing-for-plumbers)
 
 ---
 

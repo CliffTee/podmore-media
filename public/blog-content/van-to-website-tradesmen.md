@@ -332,7 +332,7 @@ Start simple. Launch fast. Improve over time. But start.
 
 ---
 
-*Want help creating a website that actually brings in customers? Our ebook includes AI prompts for writing service pages, location content, and more: [Easy AI Marketing for Plumbers](/ebook)*
+*Want help creating a website that actually brings in customers? Our ebook includes AI prompts for writing service pages, location content, and more:* [Easy AI Marketing for Plumbers](/easy-ai-marketing-for-plumbers)
 
 ---
 

@@ -137,7 +137,7 @@ Five extra emergency call-outs per week isn't a fantasy. It's a system. And it's
 
 ---
 
-*Want the exact AI prompts and systems to implement this? Check out our guide: [Easy AI Marketing for Plumbers](/ebook)*
+*Want the exact AI prompts and systems to implement this? Check out our guide:* [Easy AI Marketing for Plumbers](/easy-ai-marketing-for-plumbers)
 
 ---
 
