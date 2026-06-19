@@ -6,13 +6,11 @@
 
 ---
 
-Most local tradespeople are brilliant at their work — but invisible online.
+Most tradespeople are good at the work but easy to overlook online.
 
-You might be the best electrician in Bromley or the most reliable plumber in Croydon, but when someone's searching for your services on Google, you're nowhere to be found. Meanwhile, competitors with half your skill show up first.
+When a local customer searches for a plumber, electrician or other tradesperson, Google can only show them the businesses it understands and trusts. A strong Google Business Profile, recent reviews and useful local content can all help.
 
-The good news? Getting found on Google doesn't require a marketing degree or hours of your time each week. It requires understanding a few basics and doing them consistently.
-
-This article explains what actually works for trades and local service businesses — no fluff, no jargon, and no promises we can't keep.
+This guide covers the practical steps you can take to improve your visibility without spending hours each week on marketing.
 
 ---
 

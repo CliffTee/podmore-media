@@ -4,17 +4,13 @@
 
 ---
 
-## The Digital Shop Front
+Your van is a moving advert for your business. Your tools show the quality of your trade. But for many potential customers, your website is the first place they decide whether your business looks credible.
 
-Your van is your mobile billboard. Your tools are your trade. But in 2026, your website is your shop front — and most tradesmen have a shop front that looks closed, empty, or like it hasn't been touched since 2012.
+They may want to check the areas you cover, the services you provide, examples of your work and how to contact you. If the website is slow, unclear or looks neglected, they may move on to another business.
 
-Here's the reality: 97% of people search online before hiring a tradesperson. They don't flick through the Yellow Pages anymore. They don't ask neighbours first. They pull out their phone and Google "electrician near me" or "emergency plumber [town name]."
+The good news is that you do not need an expensive or complicated website. You need a clear, fast and trustworthy one that helps customers understand what you do and what to do next.
 
-If your website doesn't show up, or shows up but looks terrible, you don't get the call. It's that simple.
-
-But here's the good news: You don't need a £5,000 website built by a fancy agency. You don't need to understand coding, hosting, or any of the technical stuff that puts tradesmen off. You just need to know what actually matters — and what doesn't.
-
-This guide cuts through the noise. No fluff, no unnecessary features, no upselling. Just the essential elements that turn your website from a digital business card into a customer-generating machine.
+This guide covers the website elements that matter most — without unnecessary features, jargon or inflated costs.
 
 ## What Your Website Actually Needs
 

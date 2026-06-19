@@ -6,13 +6,11 @@
 
 ---
 
-You set up your Google Business Profile. You verified it. You might have even added a photo or two back when you first created it.
+You set up your Google Business Profile, verified it and added the basic details. But months later, it still doesn't seem to be helping your business.
 
-But months later, the enquiries haven't followed. Your phone isn't ringing any more than before. And you're wondering whether this whole thing is worth the bother.
+That does not necessarily mean Google Business Profile is ineffective. The problem may be incomplete information, the wrong business category, outdated details, weak photos or a lack of recent activity.
 
-The issue usually isn't that Google Business Profile doesn't work. It's that most profiles are set up incorrectly, left incomplete, or simply not maintained. They're present but not functional.
-
-This article runs through the most common problems we see — and what you can do to fix them.
+This guide walks through the most common issues to check and shows you how to improve them.
 
 ---
 

@@ -4,9 +4,7 @@
 
 ---
 
-## The Emergency Call-Out Drought
-
-It's 9:47 PM on a Tuesday. Somewhere in your coverage area, a pipe has burst. Water is flooding a kitchen. The homeowner is frantically searching Google for an emergency plumber who can come tonight.
+It's 9.47pm on a Tuesday. Somewhere in your coverage area, a pipe has burst. Water is flooding a kitchen. The homeowner is frantically searching Google for an emergency plumber who can come tonight.
 
 Will they find you?
 

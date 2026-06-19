@@ -4,15 +4,13 @@
 
 ---
 
-## The Marketing Landscape Has Shifted
+The marketing options available to local trades have changed quickly.
 
-If you're still marketing your trade business the way you did in 2020, you're working harder for worse results. The rules changed. The tools changed. What worked five years ago is now expensive, slow, and increasingly ineffective.
+Traditional methods such as leaflets, directories, referrals and local advertising can still work. At the same time, AI-assisted tools can make tasks such as writing content, planning campaigns and following up with enquiries faster and easier.
 
-This isn't about hype. This isn't about chasing shiny objects. This is about looking at what actually brings in customers for plumbers, electricians, roofers, and builders in 2026 — and what doesn't.
+The real question is not whether traditional marketing or AI is universally better. It is which approach suits your business, budget and customers.
 
-The divide is simple: traditional marketing relies on interruption and repetition. AI-powered marketing relies on targeting and timing. One shouts at everyone hoping someone listens. The other whispers to exactly the right person at exactly the right moment.
-
-Let's break down what works, what doesn't, and where you should focus your limited time and budget.
+This guide compares the strengths and weaknesses of both so you can decide where to focus your time and money.
 
 ## Traditional Marketing: The Old Guard
 
