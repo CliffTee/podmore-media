@@ -70,7 +70,7 @@ Be honest. Don't list services you can't deliver just to get calls — you'll wa
 
 ## Your Service Area Is Unclear or Wrong
 
-This is a subtle but important one. Google needs to know where you work. If your service area is wrong, you won't show up for customers who are actually nearby.
+This is a subtle but important one. Google needs to know where you work. If your service area is wrong, you won't [show up for customers who are actually nearby](/blog/get-found-on-google-tradespeople).
 
 **Common problems:**
 - You've only listed your business address, so Google thinks you only serve that exact location
@@ -211,7 +211,7 @@ Fixing your Google Business Profile won't flood you with leads overnight. That's
 
 What it will do:
 - Make you easier to find when people search for your services
-- Help you look professional and trustworthy
+- Help you [look professional and trustworthy](/blog/tradesmen-website-what-matters)
 - Give potential customers reasons to choose you over competitors
 - Support a steady flow of enquiries over time
 

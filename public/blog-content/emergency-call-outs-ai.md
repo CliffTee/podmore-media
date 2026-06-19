@@ -14,7 +14,7 @@ The emergency call-out market is brutal. Customers don't browse. They don't comp
 
 If you're relying on word-of-mouth or a basic Google Business Profile with three photos and no reviews, you're missing these jobs. Every single night, emergencies happen in your area. Every single night, someone else gets the call.
 
-But here's what most plumbers don't realise: AI has completely changed how you can capture this market. Not in some futuristic, complicated way. In practical, implementable ways that start working this week.
+But here's what most plumbers don't realise: [AI has completely changed how you can capture this market](/blog/ai-vs-traditional-marketing-local-trades-2026). Not in some futuristic, complicated way. In practical, implementable ways that start working this week.
 
 ## Why Emergency Customers Choose One Plumber Over Another
 
@@ -51,7 +51,7 @@ Tools like ChatGPT-powered chatbots or even simple Google Business Profile messa
 
 ## AI Tactic #2: Google Business Profile Optimisation
 
-Your Google Business Profile is your shop window for emergency customers. When someone searches "emergency plumber near me" at 10 PM, Google shows three local businesses in the map pack. If you're not in those three, you don't exist.
+[Your Google Business Profile](/blog/google-business-profile-not-working) is your shop window for emergency customers. When someone searches "emergency plumber near me" at 10 PM, Google shows three local businesses in the map pack. If you're not in those three, you don't exist.
 
 Getting into that map pack used to require expensive SEO agencies and months of work. AI has changed the game.
 

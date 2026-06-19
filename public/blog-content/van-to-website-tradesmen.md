@@ -85,7 +85,7 @@ Each service should have its own brief page or section explaining:
 
 ### 4. Where You Work
 
-Local SEO is crucial for trades. Your website needs to make your service area crystal clear.
+[Local SEO is crucial for trades](/blog/get-found-on-google-tradespeople). Your website needs to make your service area crystal clear.
 
 **Best practice:**
 - List specific towns and postcodes you cover
@@ -213,7 +213,7 @@ You don't need to be an SEO expert. But you need to understand the basics.
 - Make sure your site loads fast
 
 **Local SEO (showing up in your area):**
-- Claim and optimise your Google Business Profile
+- Claim and [optimise your Google Business Profile](/blog/google-business-profile-not-working)
 - Get listed in local directories (Yell, Checkatrade, etc.)
 - Ensure your name, address, and phone number are consistent everywhere
 - Get reviews on Google

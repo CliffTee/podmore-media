@@ -16,7 +16,7 @@ This guide covers the practical steps you can take to improve your visibility wi
 
 ## Why Google Business Profile Matters for Local Trades
 
-Here's something most tradespeople don't realise: for local searches, your Google Business Profile (GBP) is often the first thing potential customers see.
+Here's something most tradespeople don't realise: for local searches, [your Google Business Profile (GBP)](/blog/google-business-profile-not-working) is often the first thing potential customers see.
 
 When someone searches "plumber near me" or "electrician in Watford," Google shows a map with local businesses first. Those listings come from Google Business Profiles — and they appear before regular website results.
 
@@ -110,7 +110,7 @@ Let's be honest about what marketing can and cannot do.
 
 **Marketing can:**
 - Make you easier to find when people search for your services
-- Help you look more professional and trustworthy online
+- Help you [look more professional and trustworthy online](/blog/tradesmen-website-what-matters)
 - Keep you visible during quieter periods
 - Support a steady flow of enquiries over time
 

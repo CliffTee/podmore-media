@@ -977,7 +977,7 @@ function renderInlineMarkdown(text: string) {
   });
 }
 
-function ArticleMarkdown({ markdown, article }: { markdown: string; article: BlogArticle }) {
+function ArticleMarkdown({ markdown }: { markdown: string }) {
   const blocks = cleanArticleMarkdown(markdown).split(/\n\s*\n/);
 
   return (
@@ -1014,16 +1014,6 @@ function ArticleMarkdown({ markdown, article }: { markdown: string; article: Blo
         return (
           <Fragment key={index}>
             {renderedBlock}
-            {index === 2 && (
-              <aside className="blog-context-links" aria-label="Related articles">
-                <strong>Useful next reads</strong>
-                <span>
-                  <a href={`/blog/${article.contextualLinks[0].slug}`}>{article.contextualLinks[0].label}</a>
-                  {" or "}
-                  <a href={`/blog/${article.contextualLinks[1].slug}`}>{article.contextualLinks[1].label}</a>.
-                </span>
-              </aside>
-            )}
           </Fragment>
         );
       })}
@@ -1072,7 +1062,7 @@ function BlogArticlePage({ article }: { article: BlogArticle }) {
             <div className="blog-article-body">
               {loadError && <p>Sorry, this article could not be loaded. Please return to the <a href="/blog">blog page</a>.</p>}
               {!loadError && !markdown && <p>Loading article...</p>}
-              {markdown && <ArticleMarkdown markdown={markdown} article={article} />}
+              {markdown && <ArticleMarkdown markdown={markdown} />}
               <aside className="blog-related">
                 <p className="eyebrow">Related reading</p>
                 <h2>Keep improving your local visibility</h2>

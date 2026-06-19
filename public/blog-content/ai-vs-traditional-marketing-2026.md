@@ -120,7 +120,7 @@ Here's the truth: It's not either/or. The most successful trades businesses in 2
 
 1. **Foundation (AI-powered):** Optimised Google Business Profile, consistent review generation, basic SEO. This is non-negotiable. It's your digital shop front.
 
-2. **Content (AI-assisted):** Regular blog posts, helpful guides, emergency advice. Builds authority and captures search traffic.
+2. **Content (AI-assisted):** Regular blog posts, helpful guides, [emergency advice](/blog/emergency-call-outs-ai-plumbers). Builds authority and captures search traffic.
 
 3. **Advertising (AI-optimised):** Targeted Facebook and Google ads when you need leads quickly. Scales up and down based on your workload.
 
@@ -221,7 +221,7 @@ Traditional marketing isn't dead, but it's declining. AI-powered marketing isn't
 
 In 2026, the trades businesses winning are those who:
 - Show up when customers search (Google optimisation)
-- Build trust before the first call (content and reviews)
+- [Build trust before the first call](/blog/tradesmen-website-what-matters) (content and reviews)
 - Stay top-of-mind systematically (automation and targeting)
 - Measure everything and optimise (data-driven decisions)
 
