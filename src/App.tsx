@@ -32,6 +32,12 @@ const emailAddress = "hello@podmoremedia.com";
 const reviewUrl = `mailto:${emailAddress}?subject=Free%20Marketing%20Review%20Request`;
 const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
+const starterCheckoutUrl =
+  "https://buy.stripe.com/aFa00ja5p0gp269cg0cs801";
+const growthCheckoutUrl =
+  "https://buy.stripe.com/9B67sL2CX8MV3addk4cs802";
+const proCheckoutUrl =
+  "https://buy.stripe.com/00wbJ16Tdgfn5il7ZKcs803";
 const guideDownloadUrl = "https://www.podmoremedia.com/d1707/easy-ai-marketing-for-plumbers-FINAL.pdf";
 const brandQuestionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdNn7mpYkXjtNY6o5LulGNIlCfwAeQuZWNFQNEnVfS0nwURfA/viewform?usp=sharing&ouid=103953435540146859973";
 const onboardingCallUrl = "https://calendly.com/podmoremedia/free-15-minute-marketing-review";
@@ -105,6 +111,7 @@ const packages = [
       "FREE setup: Getting Started Guide (Facebook, GBP & email marketing setup)",
     ],
     cta: "Start with Starter",
+    checkoutUrl: starterCheckoutUrl,
   },
   {
     name: "Growth",
@@ -125,6 +132,7 @@ const packages = [
       "FREE setup: Getting Started Guide (Facebook, GBP & email marketing setup)",
     ],
     cta: "Choose Growth",
+    checkoutUrl: growthCheckoutUrl,
   },
   {
     name: "Pro",
@@ -146,6 +154,7 @@ const packages = [
       "FREE setup: Getting Started Guide (Facebook, GBP & email marketing setup)",
     ],
     cta: "Go Pro",
+    checkoutUrl: proCheckoutUrl,
   },
 ];
 
@@ -643,7 +652,7 @@ function Homepage() {
                     <li key={item}><CheckCircle2 size={17} />{item}</li>
                   ))}
                 </ul>
-                <PrimaryCta children={plan.cta} />
+                <PrimaryCta href={plan.checkoutUrl} children={plan.cta} />
               </article>
             ))}
           </div>
