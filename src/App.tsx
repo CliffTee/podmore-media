@@ -1135,8 +1135,11 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
                 <span>{item}</span>
               </div>
             ))}
-            <p className="service-thanks-guide">We have just emailed you the link to download your Getting Started Guide.</p>
-            <p className="service-thanks-handover"><strong>Everything will be prepared for your business and delivered ready for you to review, use and put into action.</strong></p>
+            <aside className="service-thanks-delivery-note">
+              <Mail size={20} aria-hidden="true" />
+              <p><strong>Your Getting Started Guide is already on its way.</strong></p>
+              <p>We have just emailed you the download link. Your remaining content will be prepared for your business and delivered ready for you to review and use.</p>
+            </aside>
           </div>
         </div>
       </section>
