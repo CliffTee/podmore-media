@@ -1441,27 +1441,18 @@ details p {
   background: var(--light);
 }
 
-.service-thanks-header {
-  display: flex;
-  align-items: center;
-  width: min(1160px, calc(100% - 40px));
-  min-height: 92px;
-  margin: 0 auto;
-}
-
-.service-thanks-header a {
-  display: inline-flex;
-  width: min(245px, 68vw);
-}
-
-.service-thanks-header img {
-  width: 100%;
-  height: auto;
-}
-
 .service-thanks-hero {
   position: relative;
   overflow: hidden;
+}
+
+.service-thanks-title {
+  font-size: clamp(46px, 4.3vw, 58px);
+  line-height: 1.02;
+}
+
+.service-thanks-title span {
+  display: block;
 }
 
 .service-thanks-hero::after {
@@ -1633,8 +1624,8 @@ details p {
 
 .service-thanks-after-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
-  gap: clamp(28px, 6vw, 68px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 58px);
   align-items: start;
 }
 
@@ -1657,6 +1648,11 @@ details p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.62;
+}
+
+.service-thanks-list .service-thanks-handover strong {
+  color: var(--navy);
+  font-weight: 950;
 }
 
 .service-thanks-list .service-thanks-guide {
@@ -2205,14 +2201,6 @@ details p {
 }
 
 @media (max-width: 720px) {
-  .service-thanks-header {
-    min-height: 68px;
-  }
-
-  .service-thanks-header a {
-    width: min(190px, 62vw);
-  }
-
   .service-thanks-hero-inner {
     gap: 24px;
     padding-top: 28px;
@@ -2221,6 +2209,14 @@ details p {
 
   .service-thanks-hero h1 {
     font-size: 34px;
+  }
+
+  .service-thanks-title span {
+    display: inline;
+  }
+
+  .service-thanks-title span + span::before {
+    content: " ";
   }
 
   .service-thanks-hero .hero-lead {

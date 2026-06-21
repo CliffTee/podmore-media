@@ -238,7 +238,6 @@ const serviceThankYouPages = {
     path: "/thank-you-starter-2503",
     packageName: "Starter Package",
     price: "£99 per month",
-    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Starter subscription is now active.",
     gratitude: "We’re genuinely grateful for your custom and looking forward to creating practical, professional content that reflects your business.",
     questionnaireIntro: "To get the most from your Starter Package, please complete the questionnaire now.",
@@ -254,7 +253,6 @@ const serviceThankYouPages = {
     path: "/thank-you-growth-1004",
     packageName: "Growth Package",
     price: "£249 per month",
-    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Growth subscription is now active.",
     gratitude: "We’re genuinely grateful for your custom and looking forward to creating content and marketing assets that reflect your business and support your online visibility.",
     questionnaireIntro: "To get the most from your Growth Package, please complete the questionnaire now.",
@@ -270,7 +268,6 @@ const serviceThankYouPages = {
     path: "/thank-you-pro-2211",
     packageName: "Pro Package",
     price: "£499 per month",
-    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Pro subscription is now active.",
     gratitude: "We’re genuinely grateful for your custom and looking forward to creating a strong, consistent collection of content, local SEO and reputation-support assets for your business.",
     questionnaireIntro: "To get the most from your Pro Package, please complete the questionnaire now.",
@@ -1097,17 +1094,15 @@ function BridgePage() {
 function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPages)[keyof typeof serviceThankYouPages] }) {
   return (
     <main className="service-thanks-page">
-      <header className="service-thanks-header">
-        <a href="/" aria-label="Podmore Media home">
-          <img src="/assets/podmore-media-logo-flat.png" alt="Podmore Media" />
-        </a>
-      </header>
-
       <section className="service-thanks-hero section-dark">
         <div className="section-inner service-thanks-hero-inner">
           <div>
             <p className="eyebrow">Subscription active</p>
-            <h1>{page.headline}</h1>
+            <h1 className="service-thanks-title">
+              <span>Thank You for</span>
+              <span>Choosing</span>
+              <span>Podmore Media</span>
+            </h1>
             <p className="hero-lead">{page.intro}</p>
             <p className="service-thanks-intro">{page.gratitude}</p>
           </div>
@@ -1129,7 +1124,9 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
         <div className="section-inner service-thanks-after-grid">
           <div>
             <h2>What Happens Next</h2>
-            <p>Once we receive your completed questionnaire, we’ll begin preparing:</p>
+            <p>Once we receive your completed questionnaire, we’ll use your answers to understand your business, customers, services and preferred tone of voice.</p>
+            <p>That information will guide the content we create for you and help us make sure everything feels relevant, consistent and appropriate for your business.</p>
+            <p>We’ll then begin preparing your first package deliverables.</p>
           </div>
           <div className="service-thanks-list">
             {page.afterItems.map((item) => (
@@ -1139,7 +1136,7 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
               </div>
             ))}
             <p className="service-thanks-guide">We have just emailed you the link to download your Getting Started Guide.</p>
-            <p className="service-thanks-handover">We’ll keep everything clear, practical and ready for you to review and use.</p>
+            <p className="service-thanks-handover"><strong>Everything will be prepared for your business and delivered ready for you to review, use and put into action.</strong></p>
           </div>
         </div>
       </section>
