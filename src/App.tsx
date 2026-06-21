@@ -243,10 +243,10 @@ const serviceThankYouPages = {
     questionnaireIntro: "To get the most from your Starter Package, please complete the questionnaire now.",
     questionnaireRequirement: "We cannot begin preparing your personalised content until we receive it.",
     afterItems: [
-      "your brand voice document",
-      "your customised review request template",
-      "your first Monthly Content Game Plan",
-      "your Starter Package content",
+      "Your Brand Voice Document",
+      "Your Customised Review Request Template",
+      "Your first Monthly Content Game Plan",
+      "Your Starter Package Content",
     ],
   },
   growth: {
@@ -258,10 +258,10 @@ const serviceThankYouPages = {
     questionnaireIntro: "To get the most from your Growth Package, please complete the questionnaire now.",
     questionnaireRequirement: "We cannot begin preparing your personalised content and marketing assets until we receive it.",
     afterItems: [
-      "your brand voice document",
-      "your customised review request template",
-      "your first Monthly Content Game Plan",
-      "your Growth Package content and marketing assets",
+      "Your Brand Voice Document",
+      "Your Customised Review Request Template",
+      "Your first Monthly Content Game Plan",
+      "Your Growth Package Content and Marketing Assets",
     ],
   },
   pro: {
@@ -273,10 +273,10 @@ const serviceThankYouPages = {
     questionnaireIntro: "To get the most from your Pro Package, please complete the questionnaire now.",
     questionnaireRequirement: "We cannot begin preparing your personalised content and assets until we receive it.",
     afterItems: [
-      "your brand voice document",
-      "your customised review request template",
-      "your first Monthly Content Game Plan",
-      "your Pro Package content, local SEO and reputation-support assets",
+      "Your Brand Voice Document",
+      "Your Customised Review Request Template",
+      "Your first Monthly Content Game Plan",
+      "Your Pro Package Content, Local SEO and Reputation-Support Assets",
     ],
   },
 } as const;
