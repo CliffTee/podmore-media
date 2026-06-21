@@ -1081,7 +1081,7 @@ function BridgePage() {
               <span>Send me my eBook</span>
               <ArrowRight size={18} />
             </button>
-            <p className="bridge-privacy-note">We will never share your details with anyone.</p>
+            <p className="bridge-privacy-note">We’ll never sell your details or use them for third-party marketing.</p>
             <img className="bridge-aweber-pixel" src="https://forms.aweber.com/form/displays.htm?id=jKzMTJycDAyc" alt="" />
           </form>
         </div>
@@ -1267,7 +1267,7 @@ function PackageBridgePage({
               <span>Continue to Next Step</span>
               <ArrowRight size={18} />
             </button>
-            <p className="service-bridge-privacy">We will never share your details with anyone.</p>
+            <p className="service-bridge-privacy">We’ll never sell your details or use them for third-party marketing.</p>
           </form>
         </div>
       </section>
