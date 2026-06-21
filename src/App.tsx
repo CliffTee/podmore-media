@@ -1103,10 +1103,16 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
             <h1>{page.headline}</h1>
             <p className="hero-lead">{page.intro}</p>
           </div>
-          <aside className="service-thanks-summary" aria-label={`${page.packageName} summary`}>
+          <aside className="service-thanks-summary service-thanks-hero-action" aria-label="Brand Voice Questionnaire action required">
             <BadgeCheck size={34} />
-            <span>{page.packageName}</span>
-            <strong>{page.price}</strong>
+            <span>Important — Action Required</span>
+            <strong>Complete Your Brand Voice Questionnaire</strong>
+            <p>We cannot begin preparing your content until we receive your completed questionnaire.</p>
+            <p>Please complete it now so your first month can get underway.</p>
+            <a className="button button-primary" href={brandQuestionnaireUrl} target="_blank" rel="noreferrer">
+              <span>Complete the Brand Voice Questionnaire</span>
+              <ArrowRight size={18} />
+            </a>
           </aside>
         </div>
       </section>

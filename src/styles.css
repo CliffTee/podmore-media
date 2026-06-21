@@ -1512,6 +1512,42 @@ details p {
   line-height: 1.45;
 }
 
+.service-thanks-hero-action {
+  gap: 14px;
+  border-top-width: 8px;
+}
+
+.service-thanks-hero-action > span {
+  color: var(--red);
+  letter-spacing: 0.06em;
+}
+
+.service-thanks-hero-action strong {
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.service-thanks-hero-action p {
+  font-weight: 650;
+}
+
+.service-thanks-hero-action .button {
+  width: 100%;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.service-thanks-hero-action .button span {
+  color: var(--white);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.service-thanks-hero-action .button svg {
+  color: var(--white);
+}
+
 .service-thanks-next .section-inner,
 .service-thanks-after .section-inner,
 .service-thanks-contact .section-inner {
