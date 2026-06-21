@@ -1525,6 +1525,17 @@ details p {
   gap: 18px;
 }
 
+.service-thanks-action-grid.single-action {
+  grid-template-columns: minmax(0, 620px);
+  justify-content: center;
+}
+
+.service-thanks-action-grid.single-action .service-thanks-action-card {
+  justify-items: center;
+  min-height: 0;
+  text-align: center;
+}
+
 .service-thanks-action-card {
   position: relative;
   display: grid;
@@ -1583,6 +1594,13 @@ details p {
 .service-thanks-list {
   display: grid;
   gap: 12px;
+}
+
+.service-thanks-list .service-thanks-handover {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.62;
 }
 
 .service-thanks-list div {
