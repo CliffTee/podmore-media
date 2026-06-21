@@ -2612,10 +2612,6 @@ details p {
   text-align: center;
 }
 
-.bridge-aweber-pixel {
-  display: none;
-}
-
 .ebook-inner {
   position: relative;
   z-index: 1;

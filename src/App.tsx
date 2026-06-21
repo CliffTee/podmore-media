@@ -1082,7 +1082,6 @@ function BridgePage() {
               <ArrowRight size={18} />
             </button>
             <p className="bridge-privacy-note">We’ll never sell your details or use them for third-party marketing.</p>
-            <img className="bridge-aweber-pixel" src="https://forms.aweber.com/form/displays.htm?id=jKzMTJycDAyc" alt="" />
           </form>
         </div>
       </section>
