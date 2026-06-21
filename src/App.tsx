@@ -1,6 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { blogArticles, type BlogArticle } from "./blogArticles";
+import { LegalDocument } from "./LegalDocument";
+import privacyPolicy from "./legal/privacy-policy.md?raw";
+import termsAndConditions from "./legal/terms-and-conditions.md?raw";
 import {
   ArrowRight,
   BadgeCheck,
@@ -289,113 +292,6 @@ const serviceThankYouPages = {
     contactLabel: "Your dedicated contact:",
   },
 } as const;
-
-const legalPages = {
-  terms: {
-    title: "Terms of Service",
-    updated: "Last updated: 4 May 2026",
-    intro: "These Terms of Service explain how you may use this website and purchase digital products or services from Podmore Media.",
-    sections: [
-      {
-        title: "1. Who We Are",
-        body: ["This website is operated by Podmore Media. References to we, us, and our mean Podmore Media. References to you mean the person using this website or purchasing one of our products."],
-      },
-      {
-        title: "2. Digital Products and Services",
-        body: [
-          "Podmore Media may sell digital products, prompt guides, templates, resources, consultations, or related marketing services. After purchase, you receive access to the product or service described on the relevant sales page or checkout page.",
-          "Our products and services are provided for business education, marketing support, and practical implementation guidance. Unless stated otherwise in writing, they do not guarantee a specific number of leads, enquiries, rankings, sales, or revenue.",
-        ],
-      },
-      {
-        title: "3. Payments",
-        body: [
-          "Payments may be processed securely by Stripe or another payment provider. We do not store your full card details on this website.",
-          "Prices are shown in GBP unless stated otherwise. You are responsible for ensuring that your payment details are accurate and that you are authorised to use the payment method provided.",
-        ],
-      },
-      {
-        title: "4. Licence and Use",
-        body: [
-          "When you buy a digital product or resource from Podmore Media, you receive a personal, non-transferable licence to use it for your own business or internal business purposes.",
-          "You may not resell, redistribute, upload, share, copy, reproduce, or publish our digital products, templates, prompts, resources, or training materials as your own product without written permission from Podmore Media.",
-        ],
-      },
-      {
-        title: "5. Accuracy and Responsibility",
-        body: [
-          "Our prompts, templates, and guidance are designed to help you create marketing assets faster, but you remain responsible for reviewing, editing, fact-checking, and approving any content you create with ChatGPT or any other AI tool.",
-          "You should make sure any marketing claims, service information, prices, locations, qualifications, and customer promises are accurate for your business before publishing them.",
-        ],
-      },
-      {
-        title: "6. Refunds and Guarantees",
-        body: ["A product or service sales page may describe a guarantee or refund promise. Where a specific guarantee is offered, the terms on the relevant sales page apply."],
-      },
-      {
-        title: "7. Contact",
-        body: ["If you have questions about these terms, contact Podmore Media at hello@podmoremedia.com."],
-      },
-    ],
-  },
-  privacy: {
-    title: "Privacy Policy",
-    updated: "Last updated: 4 May 2026",
-    intro: "This Privacy Policy explains how Podmore Media may collect, use, and protect personal information when you visit this website, contact us, or purchase products or services from Podmore Media.",
-    sections: [
-      {
-        title: "1. Who We Are",
-        body: ["This website is operated by Podmore Media. We help small businesses create practical marketing assets using AI, prompts, and simple online marketing systems."],
-      },
-      {
-        title: "2. Information We May Collect",
-        body: [
-          "We may collect information you provide directly, such as your name, email address, phone number, business details, and any message you send to us.",
-          "When you buy a product, payment and checkout information is processed by Stripe or another payment provider. We may receive purchase confirmation details such as your name, email address, product purchased, amount paid, and transaction status. We do not receive or store your full card number.",
-        ],
-      },
-      {
-        title: "3. How We Use Your Information",
-        body: [
-          "We use personal information to deliver purchased digital products, respond to enquiries, provide customer support, manage guarantee or refund requests, improve our website and products, and keep appropriate business records.",
-          "If you opt in to receive emails, we may also use your email address to send relevant updates, resources, or offers. You can unsubscribe from marketing emails at any time.",
-        ],
-      },
-      {
-        title: "4. Sharing Your Information",
-        body: [
-          "We do not sell your personal information.",
-          "We may share limited information with service providers who help us operate the website, process payments, deliver digital products, manage email communications, or provide business systems.",
-        ],
-      },
-      {
-        title: "5. Cookies and Analytics",
-        body: ["This website may use cookies or similar technologies for essential site functions, analytics, or performance measurement. You can usually control cookies through your browser settings."],
-      },
-      {
-        title: "6. Your Rights (GDPR)",
-        body: [
-          "If you are in the UK or EU, you have rights under the General Data Protection Regulation (GDPR) including:",
-          "- Right to access: Request a copy of your personal data",
-          "- Right to rectification: Request correction of inaccurate data",
-          "- Right to erasure: Request deletion of your personal data",
-          "- Right to restrict processing: Request limited use of your data",
-          "- Right to data portability: Request transfer of your data",
-          "- Right to object: Object to certain uses of your data",
-          "To exercise any of these rights, contact Podmore Media at hello@podmoremedia.com."
-        ],
-      },
-      {
-        title: "7. Data Controller",
-        body: ["Podmore Media is the data controller for personal information collected through this website. Registered address: Podmore Media, Morland Rd, London, CR0 6HF."],
-      },
-      {
-        title: "8. Contact",
-        body: ["If you have questions about this Privacy Policy or wish to exercise your data protection rights, contact Podmore Media at hello@podmoremedia.com."],
-      },
-    ],
-  },
-};
 
 function PrimaryCta({ href = reviewUrl, children = "Book a Free Marketing Review" }: { href?: string; children?: string }) {
   return (
@@ -805,7 +701,11 @@ function Footer() {
   );
 }
 
-function LegalPage({ page }: { page: typeof legalPages.terms }) {
+function LegalPage({ title, markdown }: { title: string; markdown: string }) {
+  useEffect(() => {
+    setPageMetadata(title, `${title} for Podmore Media.`, window.location.pathname);
+  }, [title]);
+
   return (
     <main className="legal-page">
       <header className="legal-header">
@@ -817,20 +717,8 @@ function LegalPage({ page }: { page: typeof legalPages.terms }) {
 
       <article className="legal-document">
         <p className="eyebrow">Podmore Media</p>
-        <h1>{page.title}</h1>
-        <p className="legal-updated">{page.updated}</p>
-        <p className="legal-intro">{page.intro}</p>
-
-        {page.sections.map((section) => (
-          <section key={section.title}>
-            <h2>{section.title}</h2>
-            {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </section>
-        ))}
-
-        <div className="legal-note">
-          <strong>Note:</strong> This page is a general website policy template for Podmore Media and is not legal advice.
-        </div>
+        <h1>{title}</h1>
+        <LegalDocument markdown={markdown} />
       </article>
       <Footer />
     </main>
@@ -1768,11 +1656,11 @@ export default function App() {
   const path = window.location.pathname;
 
   if (path === "/terms-of-service") {
-    return <LegalPage page={legalPages.terms} />;
+    return <LegalPage title="Terms and Conditions" markdown={termsAndConditions} />;
   }
 
   if (path === "/privacy-policy") {
-    return <LegalPage page={legalPages.privacy} />;
+    return <LegalPage title="Privacy Policy" markdown={privacyPolicy} />;
   }
 
   if (path === "/blog") {

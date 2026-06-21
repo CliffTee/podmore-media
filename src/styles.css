@@ -1033,7 +1033,24 @@ details p {
 }
 
 .legal-document h2 {
+  margin-top: 26px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
   font-size: clamp(24px, 3vw, 34px);
+}
+
+.legal-document h2.legal-part {
+  margin-top: 40px;
+  padding: 20px 22px;
+  border: 0;
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  background: var(--light);
+}
+
+.legal-document h3 {
+  margin-top: 22px;
+  font-size: 21px;
 }
 
 .legal-document p {
@@ -1060,6 +1077,29 @@ details p {
 .blog-page {
   min-height: 100vh;
   background: var(--light);
+}
+
+.legal-document ul,
+.legal-document ol {
+  margin: 12px 0 0 24px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.legal-document li + li {
+  margin-top: 5px;
+}
+
+.legal-document a {
+  color: var(--red);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal-document strong {
+  color: #151821;
 }
 
 .blog-hero .section-inner {
