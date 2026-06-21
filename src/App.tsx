@@ -238,13 +238,14 @@ const serviceThankYouPages = {
     path: "/thank-you-starter-2503",
     packageName: "Starter Package",
     price: "£99 per month",
-    headline: "Welcome to Podmore Media Starter",
+    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Starter subscription is now active.",
-    questionnaireIntro: "Please complete the Brand Voice Questionnaire so we can understand your business, services and preferred tone of voice.",
+    gratitude: "We’re genuinely grateful for your custom and looking forward to creating practical, professional content that reflects your business.",
+    questionnaireIntro: "To get the most from your Starter Package, please complete the questionnaire now.",
+    questionnaireRequirement: "We cannot begin preparing your personalised content until we receive it.",
     afterItems: [
       "your brand voice document",
       "your customised review request template",
-      "your Getting Started Guide",
       "your first Monthly Content Game Plan",
       "your Starter Package content",
     ],
@@ -253,13 +254,14 @@ const serviceThankYouPages = {
     path: "/thank-you-growth-1004",
     packageName: "Growth Package",
     price: "£249 per month",
-    headline: "Welcome to Podmore Media Growth",
+    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Growth subscription is now active.",
-    questionnaireIntro: "Please complete the Brand Voice Questionnaire so we can understand your business, customers, priorities and preferred tone of voice.",
+    gratitude: "We’re genuinely grateful for your custom and looking forward to creating content and marketing assets that reflect your business and support your online visibility.",
+    questionnaireIntro: "To get the most from your Growth Package, please complete the questionnaire now.",
+    questionnaireRequirement: "We cannot begin preparing your personalised content and marketing assets until we receive it.",
     afterItems: [
       "your brand voice document",
       "your customised review request template",
-      "your Getting Started Guide",
       "your first Monthly Content Game Plan",
       "your Growth Package content and marketing assets",
     ],
@@ -268,13 +270,14 @@ const serviceThankYouPages = {
     path: "/thank-you-pro-2211",
     packageName: "Pro Package",
     price: "£499 per month",
-    headline: "Welcome to Podmore Media Pro",
+    headline: "Thank You for Choosing Podmore Media",
     intro: "Your Pro subscription is now active.",
-    questionnaireIntro: "Please complete the Brand Voice Questionnaire so we can understand your business, priorities, service areas and preferred tone of voice.",
+    gratitude: "We’re genuinely grateful for your custom and looking forward to creating a strong, consistent collection of content, local SEO and reputation-support assets for your business.",
+    questionnaireIntro: "To get the most from your Pro Package, please complete the questionnaire now.",
+    questionnaireRequirement: "We cannot begin preparing your personalised content and assets until we receive it.",
     afterItems: [
       "your brand voice document",
       "your customised review request template",
-      "your Getting Started Guide",
       "your first Monthly Content Game Plan",
       "your Pro Package content, local SEO and reputation-support assets",
     ],
@@ -1094,7 +1097,11 @@ function BridgePage() {
 function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPages)[keyof typeof serviceThankYouPages] }) {
   return (
     <main className="service-thanks-page">
-      <Header />
+      <header className="service-thanks-header">
+        <a href="/" aria-label="Podmore Media home">
+          <img src="/assets/podmore-media-logo-flat.png" alt="Podmore Media" />
+        </a>
+      </header>
 
       <section className="service-thanks-hero section-dark">
         <div className="section-inner service-thanks-hero-inner">
@@ -1102,44 +1109,25 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
             <p className="eyebrow">Subscription active</p>
             <h1>{page.headline}</h1>
             <p className="hero-lead">{page.intro}</p>
+            <p className="service-thanks-intro">{page.gratitude}</p>
           </div>
           <aside className="service-thanks-summary service-thanks-hero-action" aria-label="Brand Voice Questionnaire action required">
             <BadgeCheck size={34} />
             <span>Important — Action Required</span>
             <strong>Complete Your Brand Voice Questionnaire</strong>
-            <p>We cannot begin preparing your content until we receive your completed questionnaire.</p>
-            <p>Please complete it now so your first month can get underway.</p>
+            <p>{page.questionnaireIntro}</p>
+            <p>{page.questionnaireRequirement}</p>
             <a className="button button-primary" href={brandQuestionnaireUrl} target="_blank" rel="noreferrer">
-              <span>Complete the Brand Voice Questionnaire</span>
+              <span>Complete Questionnaire</span>
               <ArrowRight size={18} />
             </a>
           </aside>
         </div>
       </section>
 
-      <section className="service-thanks-next section-white">
-        <div className="section-inner">
-          <div className="section-heading centered">
-            <h2>Complete Your Brand Voice Questionnaire</h2>
-            <p>{page.questionnaireIntro}</p>
-          </div>
-
-          <div className="service-thanks-action-grid single-action">
-            <article className="service-thanks-action-card">
-              <FileText size={30} />
-              <a className="button button-primary" href={brandQuestionnaireUrl} target="_blank" rel="noreferrer">
-                <span>Complete the Brand Voice Questionnaire</span>
-                <ArrowRight size={18} />
-              </a>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section className="service-thanks-after section-light">
         <div className="section-inner service-thanks-after-grid">
           <div>
-            <p className="eyebrow">What happens next</p>
             <h2>What Happens Next</h2>
             <p>Once we receive your completed questionnaire, we’ll begin preparing:</p>
           </div>
@@ -1150,7 +1138,8 @@ function ServicePackageThankYouPage({ page }: { page: (typeof serviceThankYouPag
                 <span>{item}</span>
               </div>
             ))}
-            <p className="service-thanks-handover">We’ll hand over the completed content and assets for you to review and use.</p>
+            <p className="service-thanks-guide">We have just emailed you the link to download your Getting Started Guide.</p>
+            <p className="service-thanks-handover">We’ll keep everything clear, practical and ready for you to review and use.</p>
           </div>
         </div>
       </section>
