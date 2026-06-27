@@ -32,7 +32,6 @@ import {
 
 const phoneNumber = "07711 888 419";
 const emailAddress = "hello@podmoremedia.com";
-const reviewUrl = `mailto:${emailAddress}?subject=Free%20Marketing%20Review%20Request`;
 const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
 const starterCheckoutUrl =
@@ -281,7 +280,7 @@ const serviceThankYouPages = {
   },
 } as const;
 
-function PrimaryCta({ href = reviewUrl, children = "Book a Free Marketing Review" }: { href?: string; children?: string }) {
+function PrimaryCta({ href, children }: { href: string; children: string }) {
   return (
     <a className="button button-primary" href={href}>
       <span>{children}</span>
