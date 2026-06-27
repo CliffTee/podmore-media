@@ -23,6 +23,7 @@ Only approved or live links should be entered here.
 | `ai-vs-traditional-marketing-2026` | `Build trust before the first call` | `/blog/tradesmen-website-what-matters` | `2026-06-19` | Live |
 | `van-to-website-tradesmen` | `Local SEO is crucial for trades` | `/blog/get-found-on-google-tradespeople` | `2026-06-19` | Live |
 | `van-to-website-tradesmen` | `optimise your Google Business Profile` | `/blog/google-business-profile-not-working` | `2026-06-19` | Live |
+| `how-to-ask-customers-for-google-reviews` | `improving an underperforming Google Business Profile` | `/blog/google-business-profile-not-working` | `2026-06-27` | Live |
 
 ## Ongoing Process
 

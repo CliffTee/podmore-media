@@ -914,7 +914,7 @@ function BlogArticlePage({ article }: { article: BlogArticle }) {
     .filter((item): item is BlogArticle => Boolean(item));
 
   useEffect(() => {
-    setPageMetadata(article.title, article.description, `/blog/${article.slug}`, article.image);
+    setPageMetadata(article.seoTitle ?? article.title, article.metaDescription ?? article.description, `/blog/${article.slug}`, article.image);
     fetch(article.contentUrl)
       .then((response) => {
         if (!response.ok) throw new Error("Article content failed to load");

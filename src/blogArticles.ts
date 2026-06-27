@@ -1,6 +1,8 @@
 export type BlogArticle = {
   slug: string;
   title: string;
+  seoTitle?: string;
+  metaDescription?: string;
   description: string;
   category: string;
   author: string;
@@ -15,6 +17,26 @@ export type BlogArticle = {
 };
 
 export const blogArticles: BlogArticle[] = [
+  {
+    slug: "how-to-ask-customers-for-google-reviews",
+    title: "How Tradespeople Can Ask Customers for Google Reviews Without Sounding Pushy",
+    seoTitle: "How Tradespeople Can Ask for Google Reviews",
+    metaDescription: "Learn when and how to ask customers for honest Google reviews, with practical message templates and a simple follow-up process for UK tradespeople.",
+    description: "Asking for a Google review does not need to feel awkward. Learn when to ask, what to say and how to make review requests part of your normal customer follow-up.",
+    category: "Google Reviews",
+    author: "Cliff Hawkins",
+    published: "27 June 2026",
+    publishedIso: "2026-06-27",
+    readTime: "9 min read",
+    image: "/assets/blog/how-to-ask-customers-for-google-reviews.png",
+    imageAlt: "UK tradesperson asking a satisfied customer for an honest Google review after completing a job",
+    contentUrl: "/blog-content/how-to-ask-customers-for-google-reviews.md",
+    relatedSlugs: ["google-business-profile-not-working", "get-found-on-google-tradespeople"],
+    contextualLinks: [
+      { slug: "google-business-profile-not-working", label: "improve an underperforming Google Business Profile" },
+      { slug: "get-found-on-google-tradespeople", label: "help more local customers find your trade business on Google" },
+    ],
+  },
   {
     slug: "get-found-on-google-tradespeople",
     title: "How Tradespeople Can Get Found on Google Without Wasting Time",
