@@ -30,7 +30,7 @@ import {
   Wrench,
 } from "lucide-react";
 
-const phoneNumber = "07711 888 419";
+const phoneNumber = "020 4572 5600";
 const emailAddress = "hello@podmoremedia.com";
 const guideUrl = "/assets/plumber-cover.png";
 const ebookCheckoutUrl = "https://buy.stripe.com/28E9ATb9t4wFaCF6VGcs800";
@@ -320,7 +320,7 @@ function Header() {
             <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>
           ))}
         </nav>
-        <PrimaryCta href="tel:+4407711888419" children="Call Us Now" />
+        <PrimaryCta href="tel:+442045725600" children="Call Us Now" />
       </header>
     </>
   );

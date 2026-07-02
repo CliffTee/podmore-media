@@ -13,7 +13,7 @@ Podmore Media provides AI-assisted marketing content and practical marketing res
 **Trading name:** Podmore Media  
 **Email:** hello@podmoremedia.com  
 **Business address:** 321 Morland Road, London, CR0 6HF  
-**Telephone:** 07711 888 419
+**Telephone:** 020 4572 5600
 
 References in these Terms to “Podmore Media”, “we”, “us” or “our” mean Podmore Media.
 
@@ -549,5 +549,5 @@ Consumers retain any mandatory rights, protections and jurisdictional entitlemen
 Questions about these Terms, purchases, cancellations, refunds or complaints should be sent to:
 
 **Email:** hello@podmoremedia.com  
-**Telephone:** 07711 888 419  
+**Telephone:** 020 4572 5600  
 **Business address:** 321 Morland Road, London, CR0 6HF

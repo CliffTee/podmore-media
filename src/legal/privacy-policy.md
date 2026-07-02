@@ -14,7 +14,7 @@ Podmore Media is a trading name operated by:
 **Trading name:** Podmore Media  
 **Business address:** 321 Morland Road, London, CR0 6HF  
 **Email:** hello@podmoremedia.com  
-**Telephone:** 07711 888 419
+**Telephone:** 020 4572 5600
 
 In this Privacy Policy, “Podmore Media”, “we”, “us” and “our” refer to the business operating under the Podmore Media trading name.
 
@@ -490,5 +490,5 @@ For privacy questions, requests or complaints, contact:
 **Data controller:** Clifford Truss  
 **Trading name:** Podmore Media  
 **Email:** hello@podmoremedia.com  
-**Telephone:** 07711 888 419  
+**Telephone:** 020 4572 5600  
 **Business address:** 321 Morland Road, London, CR0 6HF
