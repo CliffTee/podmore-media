@@ -46,7 +46,7 @@ export const blogArticles: BlogArticle[] = [
     published: "10 June 2026",
     publishedIso: "2026-06-10",
     readTime: "7 min read",
-    image: "/assets/blog/get-found-on-google-tradespeople.png",
+    image: "/assets/blog/get-found-on-google-tradespeople-v2.png",
     imageAlt: "UK electrician checking his local Google visibility beside his work van",
     contentUrl: "/blog-content/get-found-on-google-tradespeople.md",
     relatedSlugs: ["google-business-profile-not-working", "tradesmen-website-what-matters"],
