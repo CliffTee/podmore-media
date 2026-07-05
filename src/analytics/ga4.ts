@@ -3,24 +3,67 @@ export const GA4_MEASUREMENT_ID = "G-61HX1GVR89";
 const GA4_SCRIPT_ID = "podmore-ga4";
 const GA4_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
 
-type GtagCommand = [command: string, targetOrAction: string | Date, parameters?: Record<string, unknown>];
+type Gtag = {
+  (command: "consent", action: "default" | "update", parameters: Record<string, unknown>): void;
+  (command: "js", date: Date): void;
+  (command: "config", target: string, parameters?: Record<string, unknown>): void;
+  (command: "event", eventName: string, parameters?: Record<string, unknown>): void;
+  (
+    command: "get",
+    target: string,
+    fieldName: "client_id",
+    callback: (clientId: string | undefined) => void,
+  ): void;
+};
 
 declare global {
   interface Window {
-    dataLayer?: GtagCommand[];
-    gtag?: (...args: GtagCommand) => void;
+    dataLayer?: IArguments[];
+    gtag?: Gtag;
     [key: `ga-disable-${string}`]: boolean | undefined;
   }
 }
 
 let analyticsAllowed = false;
 let loadPromise: Promise<void> | null = null;
+let tagConfigured = false;
 let lastTrackedRoute: string | null = null;
 
 function initialiseDataLayer() {
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || ((...args: GtagCommand) => {
-    window.dataLayer!.push(args);
+  window.gtag = window.gtag || (function gtag() {
+    window.dataLayer!.push(arguments);
+  } as Gtag);
+}
+
+function configureGoogleTag() {
+  if (tagConfigured) return;
+  tagConfigured = true;
+
+  window.gtag!("consent", "default", {
+    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+  window.gtag!("js", new Date());
+  window.gtag!("config", GA4_MEASUREMENT_ID, {
+    send_page_view: false,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+}
+
+function waitForGoogleTagReady(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const timeout = window.setTimeout(() => {
+      reject(new Error("Google Analytics did not become ready"));
+    }, 5000);
+
+    window.gtag!("get", GA4_MEASUREMENT_ID, "client_id", () => {
+      window.clearTimeout(timeout);
+      resolve();
+    });
   });
 }
 
@@ -34,22 +77,11 @@ export function loadGoogleAnalytics(): Promise<void> {
   if (loadPromise) return loadPromise;
 
   initialiseDataLayer();
-  window.gtag!("consent", "default", {
-    analytics_storage: "granted",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-  });
-  window.gtag!("js", new Date());
-  window.gtag!("config", GA4_MEASUREMENT_ID, {
-    send_page_view: false,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-  });
+  configureGoogleTag();
 
   const existingScript = document.getElementById(GA4_SCRIPT_ID) as HTMLScriptElement | null;
   if (existingScript) {
-    loadPromise = Promise.resolve();
+    loadPromise = waitForGoogleTagReady();
     return loadPromise;
   }
 
@@ -58,7 +90,9 @@ export function loadGoogleAnalytics(): Promise<void> {
     script.id = GA4_SCRIPT_ID;
     script.async = true;
     script.src = GA4_SCRIPT_URL;
-    script.addEventListener("load", () => resolve(), { once: true });
+    script.addEventListener("load", () => {
+      void waitForGoogleTagReady().then(resolve, reject);
+    }, { once: true });
     script.addEventListener("error", () => {
       loadPromise = null;
       reject(new Error("Google Analytics failed to load"));
@@ -124,4 +158,3 @@ export function disableGoogleAnalytics() {
     document.cookie = `${name}=; Max-Age=0; Path=/; Domain=.${apexDomain}; SameSite=Lax; Secure`;
   }
 }
-
