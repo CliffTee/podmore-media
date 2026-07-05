@@ -1,7 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { blogArticles, type BlogArticle } from "./blogArticles";
+import { trackEbookBeginCheckout } from "./analytics/ga4";
+import { trackMetaEbookInitiateCheckout } from "./marketing/metaPixel";
+import { useConsent } from "./consent/ConsentProvider";
 import { LegalDocument } from "./LegalDocument";
+import cookiePolicy from "./legal/cookie-policy.md?raw";
 import privacyPolicy from "./legal/privacy-policy.md?raw";
 import termsAndConditions from "./legal/terms-and-conditions.md?raw";
 import {
@@ -428,6 +432,9 @@ function Homepage() {
               <span>{contactStatus === "submitting" ? "Sending..." : "Get in Touch"}</span>
               <ArrowRight size={18} />
             </button>
+            <p className="contact-privacy-notice">
+              We use your details to respond to your enquiry. Read our <a href="/privacy-policy">Privacy Policy</a>.
+            </p>
             {contactStatus === "success" && <p className="form-status success">Thanks, your message has been sent. We will be in touch soon.</p>}
             {contactStatus === "error" && <p className="form-status error">Sorry, something went wrong. Please try again or call us directly.</p>}
           </form>
@@ -656,6 +663,8 @@ function Homepage() {
 }
 
 function Footer() {
+  const { openPreferences } = useConsent();
+
   return (
     <footer className="site-footer">
       <div className="section-inner footer-grid">
@@ -681,6 +690,8 @@ function Footer() {
           <a href="/blog">Blog</a>
           <a href="/terms-of-service">Terms of Service</a>
           <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/cookie-policy">Cookie Policy</a>
+          <button className="footer-cookie-settings" type="button" onClick={openPreferences}>Cookie settings</button>
         </div>
       </div>
       <div className="footer-bottom">&copy; 2026 Podmore Media. All rights reserved.</div>
@@ -1269,6 +1280,7 @@ function PackageBridgePage({
           </form>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
@@ -1416,9 +1428,20 @@ const ebookFaqs = [
   ["What should I do if I want help implementing everything?", "The book recommends visiting Podmore Media for help applying the prompts, building an AI marketing system, and turning the ideas inside the book into real marketing assets for your plumbing business."],
 ];
 
-function EbookBuyButton() {
+function EbookBuyButton({ ctaPosition }: { ctaPosition: "hero" | "middle" | "final" }) {
   return (
-    <a className="ebook-buy-button" href={ebookCheckoutUrl} target="_blank" rel="noreferrer" aria-label="Buy the Book Now for GBP 19.97">
+    <a
+      className="ebook-buy-button"
+      href={ebookCheckoutUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Buy the Book Now for GBP 19.97"
+      data-cta-position={ctaPosition}
+      onClick={() => {
+        trackEbookBeginCheckout(ctaPosition);
+        trackMetaEbookInitiateCheckout(ctaPosition);
+      }}
+    >
       <CreditCard size={19} />
       <span>Buy the Book Now</span>
       <ArrowRight size={18} />
@@ -1426,12 +1449,20 @@ function EbookBuyButton() {
   );
 }
 
-function EbookCheckoutCta({ badge = false, stacked = false }: { badge?: boolean; stacked?: boolean }) {
+function EbookCheckoutCta({
+  badge = false,
+  stacked = false,
+  ctaPosition,
+}: {
+  badge?: boolean;
+  stacked?: boolean;
+  ctaPosition: "hero" | "middle" | "final";
+}) {
   if (badge) {
     return (
       <div className="ebook-checkout-cta with-badge">
         <div className="ebook-button-stack">
-          <EbookBuyButton />
+          <EbookBuyButton ctaPosition={ctaPosition} />
           <div className="ebook-secure-note">
             <ShieldCheck size={18} />
             Secure checkout via Stripe
@@ -1444,7 +1475,7 @@ function EbookCheckoutCta({ badge = false, stacked = false }: { badge?: boolean;
 
   return (
     <div className={`ebook-checkout-cta ${stacked ? "stacked" : ""}`}>
-      <EbookBuyButton />
+      <EbookBuyButton ctaPosition={ctaPosition} />
       <div className="ebook-secure-note">
         <ShieldCheck size={18} />
         Secure checkout via Stripe
@@ -1454,12 +1485,16 @@ function EbookCheckoutCta({ badge = false, stacked = false }: { badge?: boolean;
 }
 
 function EbookFooter() {
+  const { openPreferences } = useConsent();
+
   return (
     <footer className="ebook-footer">
       <span>&copy; 2026 <a href="https://podmoremedia.com" target="_blank" rel="noreferrer">Podmore Media</a></span>
       <span>Easy AI Marketing for Plumbers</span>
       <a href="/terms-of-service" target="_blank" rel="noreferrer">Terms of Service</a>
       <a href="/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>
+      <a href="/cookie-policy" target="_blank" rel="noreferrer">Cookie Policy</a>
+      <button className="ebook-footer-cookie-settings" type="button" onClick={openPreferences}>Cookie settings</button>
     </footer>
   );
 }
@@ -1479,7 +1514,7 @@ function EbookLandingPage() {
               Get 25 copy-and-paste prompts for your website, local SEO, social media, reviews, and referrals — organised into 5 practical sections.
             </p>
             <div className="ebook-hero-actions">
-              <EbookCheckoutCta />
+              <EbookCheckoutCta ctaPosition="hero" />
             </div>
             <div className="ebook-trust-strip" aria-label="Book highlights">
               <span><Wrench size={16} />Built for busy owners</span>
@@ -1558,7 +1593,7 @@ function EbookLandingPage() {
             <h2>Stop starting from a blank page every time your business needs marketing content.</h2>
             <p>Use the prompts to create clearer pages, stronger local content, useful social posts, better review requests, and a simple monthly marketing routine.</p>
             <div className="ebook-cta-actions">
-              <EbookCheckoutCta badge />
+              <EbookCheckoutCta badge ctaPosition="middle" />
             </div>
           </div>
         </div>
@@ -1608,7 +1643,7 @@ function EbookLandingPage() {
             ))}
           </div>
           <div className="ebook-faq-cta">
-            <EbookCheckoutCta stacked />
+            <EbookCheckoutCta stacked ctaPosition="final" />
           </div>
         </div>
       </section>
@@ -1626,6 +1661,10 @@ export default function App() {
 
   if (path === "/privacy-policy") {
     return <LegalPage title="Privacy Policy" markdown={privacyPolicy} />;
+  }
+
+  if (path === "/cookie-policy") {
+    return <LegalPage title="Cookie Policy" markdown={cookiePolicy} />;
   }
 
   if (path === "/blog") {
