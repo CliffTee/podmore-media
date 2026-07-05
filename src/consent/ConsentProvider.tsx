@@ -32,6 +32,11 @@ type ConsentContextValue = {
 
 const ConsentContext = createContext<ConsentContextValue | null>(null);
 const ROUTE_CHANGE_EVENT = "podmore:routechange";
+const CONSENT_MODAL_EXEMPT_ROUTES = new Set([
+  "/privacy-policy",
+  "/cookie-policy",
+  "/terms-of-service",
+]);
 
 export function useConsent() {
   const context = useContext(ConsentContext);
@@ -390,7 +395,19 @@ function CookiePreferences({
 export function ConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState<ConsentPreferences | null>(() => readConsentPreferences());
   const [preferencesOpen, setPreferencesOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(() => window.location.pathname);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const updateCurrentPath = () => setCurrentPath(window.location.pathname);
+    window.addEventListener(ROUTE_CHANGE_EVENT, updateCurrentPath);
+    window.addEventListener("popstate", updateCurrentPath);
+
+    return () => {
+      window.removeEventListener(ROUTE_CHANGE_EVENT, updateCurrentPath);
+      window.removeEventListener("popstate", updateCurrentPath);
+    };
+  }, []);
 
   const openPreferences = () => {
     returnFocusRef.current = document.activeElement as HTMLElement | null;
@@ -433,7 +450,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
       <RouteObserver />
       <Analytics consent={consent} />
       <Marketing consent={consent} />
-      {!consent && !preferencesOpen && (
+      {!consent && !preferencesOpen && !CONSENT_MODAL_EXEMPT_ROUTES.has(currentPath) && (
         <CookieBanner
           onAcceptAll={() => saveChoice(true, true)}
           onEssentialOnly={() => saveChoice(false, false)}
