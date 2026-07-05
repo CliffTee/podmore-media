@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/easy-ai-marketing-for-plumbers",
+      "destination": "/easy-ai-marketing-for-plumbers.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
