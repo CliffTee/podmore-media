@@ -5,6 +5,30 @@
       "destination": "/easy-ai-marketing-for-plumbers.html"
     },
     {
+      "source": "/blog/tradesmen-website-what-matters",
+      "destination": "/blog/tradesmen-website-what-matters.html"
+    },
+    {
+      "source": "/blog/ai-vs-traditional-marketing-local-trades-2026",
+      "destination": "/blog/ai-vs-traditional-marketing-local-trades-2026.html"
+    },
+    {
+      "source": "/blog/emergency-call-outs-ai-plumbers",
+      "destination": "/blog/emergency-call-outs-ai-plumbers.html"
+    },
+    {
+      "source": "/blog/google-business-profile-not-working",
+      "destination": "/blog/google-business-profile-not-working.html"
+    },
+    {
+      "source": "/blog/get-found-on-google-tradespeople",
+      "destination": "/blog/get-found-on-google-tradespeople.html"
+    },
+    {
+      "source": "/blog/how-to-ask-customers-for-google-reviews",
+      "destination": "/blog/how-to-ask-customers-for-google-reviews.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
