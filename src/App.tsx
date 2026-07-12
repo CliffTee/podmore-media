@@ -765,6 +765,22 @@ function setPageMetadata(title: string, description: string, path = "/", image =
   upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", imageUrl);
 }
 
+function setArticleMetadata(article: BlogArticle) {
+  const upsertMeta = (selector: string, key: string, content: string) => {
+    let element = document.querySelector(selector);
+    if (!element) {
+      element = document.createElement("meta");
+      element.setAttribute("property", key);
+      document.head.appendChild(element);
+    }
+    element.setAttribute("content", content);
+  };
+
+  upsertMeta('meta[property="og:type"]', "og:type", "article");
+  upsertMeta('meta[property="article:published_time"]', "article:published_time", article.publishedIso);
+  upsertMeta('meta[property="article:author"]', "article:author", article.author);
+}
+
 function BlogCard({ article, featured = false }: { article: BlogArticle; featured?: boolean }) {
   return (
     <article className={`blog-card ${featured ? "featured" : ""}`}>
@@ -925,6 +941,7 @@ function BlogArticlePage({ article }: { article: BlogArticle }) {
 
   useEffect(() => {
     setPageMetadata(article.seoTitle ?? article.title, article.metaDescription ?? article.description, `/blog/${article.slug}`, article.image);
+    setArticleMetadata(article);
     fetch(article.contentUrl)
       .then((response) => {
         if (!response.ok) throw new Error("Article content failed to load");
