@@ -680,7 +680,7 @@ function Footer() {
         </div>
         <div>
           <h3>Social</h3>
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://www.facebook.com/PodmoreMedia" target="_blank" rel="noreferrer">Facebook</a>
           <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
         </div>

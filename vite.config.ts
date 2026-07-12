@@ -1,5 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
+
+const blogArticleInputs = Object.fromEntries(
+  readdirSync("blog")
+    .filter((fileName) => fileName.endsWith(".html"))
+    .map((fileName) => [
+      `blog-${fileName.replace(/\.html$/, "")}`,
+      join("blog", fileName),
+    ]),
+);
 
 export default defineConfig({
   plugins: [react()],
@@ -9,13 +20,7 @@ export default defineConfig({
         main: "index.html",
         blog: "blog.html",
         ebook: "easy-ai-marketing-for-plumbers.html",
-        blogTradesmenWebsite: "blog/tradesmen-website-what-matters.html",
-        blogAiVsTraditional: "blog/ai-vs-traditional-marketing-local-trades-2026.html",
-        blogEmergencyCallOuts: "blog/emergency-call-outs-ai-plumbers.html",
-        blogGoogleBusinessProfile: "blog/google-business-profile-not-working.html",
-        blogGetFoundOnGoogle: "blog/get-found-on-google-tradespeople.html",
-        blogGoogleReviews: "blog/how-to-ask-customers-for-google-reviews.html",
-        blogAiSearchTradespeople: "blog/how-tradespeople-can-make-their-business-easier-to-find-in-ai-search.html",
+        ...blogArticleInputs,
       },
     },
   },
