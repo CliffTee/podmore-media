@@ -766,19 +766,22 @@ function setPageMetadata(title: string, description: string, path = "/", image =
 }
 
 function setArticleMetadata(article: BlogArticle) {
-  const upsertMeta = (selector: string, key: string, content: string) => {
+  const upsertMeta = (selector: string, attribute: "name" | "property", key: string, content: string) => {
     let element = document.querySelector(selector);
     if (!element) {
       element = document.createElement("meta");
-      element.setAttribute("property", key);
+      element.setAttribute(attribute, key);
       document.head.appendChild(element);
     }
     element.setAttribute("content", content);
   };
 
-  upsertMeta('meta[property="og:type"]', "og:type", "article");
-  upsertMeta('meta[property="article:published_time"]', "article:published_time", article.publishedIso);
-  upsertMeta('meta[property="article:author"]', "article:author", article.author);
+  upsertMeta('meta[property="og:type"]', "property", "og:type", "article");
+  upsertMeta('meta[property="og:image:alt"]', "property", "og:image:alt", article.imageAlt);
+  upsertMeta('meta[property="article:published_time"]', "property", "article:published_time", article.publishedIso);
+  upsertMeta('meta[property="article:author"]', "property", "article:author", article.author);
+  upsertMeta('meta[name="twitter:card"]', "name", "twitter:card", "summary_large_image");
+  upsertMeta('meta[name="twitter:image:alt"]', "name", "twitter:image:alt", article.imageAlt);
 }
 
 function BlogCard({ article, featured = false }: { article: BlogArticle; featured?: boolean }) {
