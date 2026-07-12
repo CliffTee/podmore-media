@@ -901,7 +901,7 @@ function ArticleMarkdown({ markdown }: { markdown: string }) {
         let renderedBlock: ReactNode;
         if (block.startsWith("### ")) renderedBlock = <h3>{renderInlineMarkdown(block.slice(4))}</h3>;
         else if (block.startsWith("## ")) renderedBlock = <h2>{renderInlineMarkdown(block.slice(3))}</h2>;
-        else if (lines.length > 1 && lines.slice(1).every((line) => /^[-*] /.test(line))) {
+        else if (lines.length > 1 && !/^[-*] /.test(lines[0]) && lines.slice(1).every((line) => /^[-*] /.test(line))) {
           renderedBlock = (
             <div className="blog-content-group">
               <p>{renderInlineMarkdown(lines[0])}</p>
