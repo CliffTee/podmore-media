@@ -24,6 +24,10 @@ Only approved or live links should be entered here.
 | `van-to-website-tradesmen` | `Local SEO is crucial for trades` | `/blog/get-found-on-google-tradespeople` | `2026-06-19` | Live |
 | `van-to-website-tradesmen` | `optimise your Google Business Profile` | `/blog/google-business-profile-not-working` | `2026-06-19` | Live |
 | `how-to-ask-customers-for-google-reviews` | `improving an underperforming Google Business Profile` | `/blog/google-business-profile-not-working` | `2026-06-27` | Live |
+| `how-tradespeople-can-make-their-business-easier-to-find-in-ai-search` | `improving an underperforming Google Business Profile` | `/blog/google-business-profile-not-working` | `2026-07-12` | Live |
+| `how-tradespeople-can-make-their-business-easier-to-find-in-ai-search` | `how tradespeople can get found on Google without wasting time` | `/blog/get-found-on-google-tradespeople` | `2026-07-12` | Live |
+| `how-tradespeople-can-make-their-business-easier-to-find-in-ai-search` | `practical marketing support for UK trades and local service businesses` | `/#services` | `2026-07-12` | Live |
+| `how-tradespeople-can-make-their-business-easier-to-find-in-ai-search` | `contact Podmore Media` | `/#home` | `2026-07-12` | Live |
 
 ## Ongoing Process
 

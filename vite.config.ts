@@ -14,6 +14,7 @@ export default defineConfig({
         blogGoogleBusinessProfile: "blog/google-business-profile-not-working.html",
         blogGetFoundOnGoogle: "blog/get-found-on-google-tradespeople.html",
         blogGoogleReviews: "blog/how-to-ask-customers-for-google-reviews.html",
+        blogAiSearchTradespeople: "blog/how-tradespeople-can-make-their-business-easier-to-find-in-ai-search.html",
       },
     },
   },

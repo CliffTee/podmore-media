@@ -18,6 +18,26 @@ export type BlogArticle = {
 
 export const blogArticles: BlogArticle[] = [
   {
+    slug: "how-tradespeople-can-make-their-business-easier-to-find-in-ai-search",
+    title: "How Tradespeople Can Make Their Business Easier to Find in AI Search",
+    seoTitle: "How Tradespeople Can Make Their Business Easier to Find in AI Search",
+    metaDescription: "Practical steps to help a trade or local service business become easier for Google and AI-powered search tools to understand, trust and recommend.",
+    description: "AI search does not require secret tricks or special markup. Learn how clear services, useful content, accurate business information and a strong Google Business Profile can make your trade business easier to understand online.",
+    category: "Local SEO",
+    author: "Cliff Hawkins",
+    published: "12 July 2026",
+    publishedIso: "2026-07-12",
+    readTime: "8 min read",
+    image: "/assets/blog/ai-search-tradespeople-blog-header.jpg",
+    imageAlt: "Tradesperson's workbench with tools, a phone showing an AI local search result and a practical search checklist",
+    contentUrl: "/blog-content/how-tradespeople-can-make-their-business-easier-to-find-in-ai-search.md",
+    relatedSlugs: ["google-business-profile-not-working", "get-found-on-google-tradespeople"],
+    contextualLinks: [
+      { slug: "google-business-profile-not-working", label: "improve an underperforming Google Business Profile" },
+      { slug: "get-found-on-google-tradespeople", label: "get found on Google without wasting time" },
+    ],
+  },
+  {
     slug: "how-to-ask-customers-for-google-reviews",
     title: "How Tradespeople Can Ask Customers for Google Reviews Without Sounding Pushy",
     seoTitle: "How Tradespeople Can Ask for Google Reviews",
