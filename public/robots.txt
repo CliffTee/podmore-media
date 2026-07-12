@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /blog-content/
+Disallow: /d1707/
+Disallow: /d2305/
+Disallow: /thank-you-1909
+Disallow: /thank-you-starter-2503
+Disallow: /thank-you-growth-1004
+Disallow: /thank-you-pro-2211
+Disallow: /ty-2512
+Disallow: /ty-starter-3110
+Disallow: /ty-growth-1004
+Disallow: /ty-pro-2211
+
+Sitemap: https://www.podmoremedia.com/sitemap.xml

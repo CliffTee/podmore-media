@@ -7,6 +7,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
+        blog: "blog.html",
         ebook: "easy-ai-marketing-for-plumbers.html",
         blogTradesmenWebsite: "blog/tradesmen-website-what-matters.html",
         blogAiVsTraditional: "blog/ai-vs-traditional-marketing-local-trades-2026.html",

@@ -5,6 +5,10 @@
       "destination": "/easy-ai-marketing-for-plumbers.html"
     },
     {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
       "source": "/blog/tradesmen-website-what-matters",
       "destination": "/blog/tradesmen-website-what-matters.html"
     },

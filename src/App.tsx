@@ -724,7 +724,7 @@ function LegalPage({ title, markdown }: { title: string; markdown: string }) {
 }
 
 function setPageMetadata(title: string, description: string, path = "/", image = "/assets/podmore-media-logo-flat.png") {
-  const siteUrl = "https://podmoremedia.com";
+  const siteUrl = "https://www.podmoremedia.com";
   const canonicalUrl = `${siteUrl}${path}`;
   const imageUrl = image.startsWith("http") ? image : `${siteUrl}${image}`;
   document.title = `${title} | Podmore Media`;
@@ -1509,7 +1509,7 @@ function EbookFooter() {
 
   return (
     <footer className="ebook-footer">
-      <span>&copy; 2026 <a href="https://podmoremedia.com" target="_blank" rel="noreferrer">Podmore Media</a></span>
+      <span>&copy; 2026 <a href="https://www.podmoremedia.com" target="_blank" rel="noreferrer">Podmore Media</a></span>
       <span>Easy AI Marketing for Plumbers</span>
       <a href="/terms-of-service" target="_blank" rel="noreferrer">Terms of Service</a>
       <a href="/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>
@@ -1551,7 +1551,7 @@ function EbookLandingPage() {
             <p className="ebook-eyebrow">Meet the author</p>
             <h2>Meet the author, Cliff Hawkins</h2>
             <p>
-              Cliff Hawkins is the creator of <a className="ebook-text-link" href="https://podmoremedia.com" target="_blank" rel="noreferrer">Podmore Media</a> and the author of <em>Easy AI Marketing for Plumbers</em>. Through Podmore Media, Cliff helps small businesses use AI to create practical online marketing assets faster, including website prompts, SEO plans, blog content plans, social media content, and social media plans.
+              Cliff Hawkins is the creator of <a className="ebook-text-link" href="https://www.podmoremedia.com" target="_blank" rel="noreferrer">Podmore Media</a> and the author of <em>Easy AI Marketing for Plumbers</em>. Through Podmore Media, Cliff helps small businesses use AI to create practical online marketing assets faster, including website prompts, SEO plans, blog content plans, social media content, and social media plans.
             </p>
             <p>
               This guide was created specifically for plumbing business owners who want a simpler way to turn real-world expertise into useful marketing content without becoming full-time content creators.
