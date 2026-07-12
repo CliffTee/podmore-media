@@ -29,6 +29,10 @@
       "destination": "/blog/how-to-ask-customers-for-google-reviews.html"
     },
     {
+      "source": "/blog/how-tradespeople-can-make-their-business-easier-to-find-in-ai-search",
+      "destination": "/blog/how-tradespeople-can-make-their-business-easier-to-find-in-ai-search.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
