@@ -18,6 +18,27 @@ export type BlogArticle = {
 
 export const blogArticles: BlogArticle[] = [
   {
+    slug: "10-quick-website-checks-tradesperson-summer",
+    title: "10 Quick Website Checks Every Tradesperson Should Do This Summer",
+    seoTitle: "10 Quick Website Checks Every Tradesperson Should Do This Summer",
+    metaDescription: "Simple, practical website checks for tradespeople. Improve user experience, build trust and make it easier for customers to contact your business this summer.",
+    description: "Your trade website does not need a full rebuild to work better. These quick checks can help you spot unclear services, outdated information, mobile problems and missed enquiry opportunities.",
+    category: "Websites",
+    author: "Cliff Hawkins",
+    published: "18 July 2026",
+    publishedIso: "2026-07-18",
+    readTime: "8 min read",
+    image: "/assets/blog/website-checks-tradesperson-summer-blog-header.jpg",
+    imageAlt: "Tradesperson's workbench with a website review checklist, tools, coffee mug and phone showing a local trade website",
+    contentUrl: "/blog-content/10-quick-website-checks-tradesperson-summer.md",
+    relatedSlugs: ["tradesmen-website-what-matters", "google-business-profile-not-working"],
+    contextualLinks: [
+      { slug: "google-business-profile-not-working", label: "improving an underperforming Google Business Profile" },
+      { slug: "tradesmen-website-what-matters", label: "how a website helps tradespeople build trust" },
+      { slug: "get-found-on-google-tradespeople", label: "getting found on Google" },
+    ],
+  },
+  {
     slug: "how-tradespeople-can-make-their-business-easier-to-find-in-ai-search",
     title: "How Tradespeople Can Make Their Business Easier to Find in AI Search",
     seoTitle: "How Tradespeople Can Make Their Business Easier to Find in AI Search",

@@ -35,19 +35,40 @@ function readPngDimensions(buffer) {
 
 function readJpegDimensions(buffer) {
   let offset = 2;
+  const dimensions = [];
   while (offset < buffer.length) {
-    if (buffer[offset] !== 0xff) return undefined;
-    const marker = buffer[offset + 1];
-    const size = buffer.readUInt16BE(offset + 2);
-    if (marker >= 0xc0 && marker <= 0xc3) {
-      return {
-        height: buffer.readUInt16BE(offset + 5),
-        width: buffer.readUInt16BE(offset + 7),
-      };
+    if (buffer[offset] !== 0xff) {
+      offset += 1;
+      continue;
     }
-    offset += 2 + size;
+
+    while (buffer[offset] === 0xff) offset += 1;
+    const marker = buffer[offset];
+    offset += 1;
+
+    if (marker === 0xd9 || marker === 0xda) break;
+    if (marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) continue;
+    if (offset + 2 > buffer.length) break;
+
+    const size = buffer.readUInt16BE(offset);
+    if (size < 2 || offset + size > buffer.length) break;
+
+    const isStartOfFrame =
+      (marker >= 0xc0 && marker <= 0xc3) ||
+      (marker >= 0xc5 && marker <= 0xc7) ||
+      (marker >= 0xc9 && marker <= 0xcb) ||
+      (marker >= 0xcd && marker <= 0xcf);
+
+    if (isStartOfFrame) {
+      dimensions.push({
+        height: buffer.readUInt16BE(offset + 3),
+        width: buffer.readUInt16BE(offset + 5),
+      });
+    }
+
+    offset += size;
   }
-  return undefined;
+  return dimensions.sort((a, b) => (b.width * b.height) - (a.width * a.height))[0];
 }
 
 function imageDimensions(imagePath) {

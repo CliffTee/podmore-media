@@ -101,6 +101,10 @@
       "destination": "/blog.html"
     },
     {
+      "source": "/blog/10-quick-website-checks-tradesperson-summer",
+      "destination": "/blog/10-quick-website-checks-tradesperson-summer.html"
+    },
+    {
       "source": "/blog/tradesmen-website-what-matters",
       "destination": "/blog/tradesmen-website-what-matters.html"
     },
